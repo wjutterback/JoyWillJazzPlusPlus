@@ -1,4 +1,3 @@
-var imgURL = $("#imgURL").val();
 
 const data = {
   api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -8,8 +7,10 @@ const data = {
   return_attributes: "beauty,age,gender",
 }
 
-function doubleSearch() {
+function doubleSearch(imgURL) {
+  alert('button clicked');
   console.log(imgURL)
+  console.log(data);
 
   function googleSearch() {
 
@@ -37,4 +38,6 @@ function doubleSearch() {
   // scanFace();
 }
 
-$("#submitButton").on("click", doubleSearch(imgUrl))
+$("#submitButton").on("click", function () {
+  doubleSearch($('#imgURL').val());
+})
