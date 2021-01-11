@@ -3,8 +3,8 @@
 // $('input')[0].files[0] - path to stored img on webpage
 
 function doubleSearch(htmlsrc, htmlsearch) {
-  var fileList = $('input')[0].files; // the array, not used just as a reminder
-  var imgFile = $('input')[0].files[0];
+  var fileList = $('input').prop('files'); // the array, not used just as a reminder
+  var imgFile = $('input').prop('files')[0];
   const preview = document.querySelector('img')
   console.log($('input')[0])
   console.log($('input')[0].files[0])
