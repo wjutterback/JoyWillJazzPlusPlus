@@ -9,6 +9,7 @@ function doubleSearch(htmlsrc, htmlsearch) {
   const preview = document.querySelector('img')
   console.log($('input')[0])
   console.log($('input')[0].files[0])
+  console.log(imgFile);
   console.log(fileList);
 
   function googleSearch(searchVar) {
