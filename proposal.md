@@ -30,7 +30,7 @@ SO THAT I can utilize the best products for my face
 ## Wireframe Sketch of Design
 
 
-![Img] (assets/img/WireSketch.png) 
+##![WireSketch] (assets/img/WireSketch.png) 
 
 
 
