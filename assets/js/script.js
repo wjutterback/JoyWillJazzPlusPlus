@@ -1,3 +1,5 @@
+=======
+
 // A file input's value attribute contains a DOMString that represents the path to the selected file(s)
 // $('input')[0].files[0] - path to stored img on webpage
 
@@ -29,12 +31,15 @@ function doubleSearch(htmlsrc, htmlsearch) {
       return_attributes: "age,gender,skinstatus", // more options available, emotion, smile, ethnicity etc.
     }
     console.log(data);
+    
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
     }).then(function (response) {
+
       console.log(response);
       // googleSearch(faceInfoAge);
     })
@@ -46,14 +51,16 @@ function doubleSearch(htmlsrc, htmlsearch) {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
       image_url: link,
+
     }
     console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
-    }).then(function (response) {
+
       console.log(response);
       // googleSearch(faceInfoAge);
 
