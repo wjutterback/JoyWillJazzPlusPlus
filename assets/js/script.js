@@ -1,3 +1,4 @@
+=======
 
 //change query URL to skinanalyze API
 // A file input's value attribute contains a DOMString that represents the path to the selected file(s)
@@ -6,7 +7,9 @@
 function doubleSearch(htmlsrc, htmlinput) {
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
   var imgFile = $('input').prop('files')[0];
+
   const preview = document.querySelector('img');
+
   console.log(fileList);
   console.log(imgFile);
 
@@ -28,12 +31,15 @@ function doubleSearch(htmlsrc, htmlinput) {
       image_base64: file64,
     }
     console.log(data);
+
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
     }).then(function (response) {
+
       // will need to make a conditional statement for what google searches.
       console.log(response);
       //skin_type values below
@@ -62,6 +68,7 @@ function doubleSearch(htmlsrc, htmlinput) {
     }
     console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
