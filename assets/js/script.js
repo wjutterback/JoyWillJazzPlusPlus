@@ -1,17 +1,14 @@
 
+// A file input's value attribute contains a DOMString that represents the path to the selected file(s)
+// $('input')[0].files[0] - path to stored img on webpage
 
-function doubleSearch(imgURL) {
-
-  const data = {
-    api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
-    api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
-    image_url: imgURL,
-    return_landmark: "1",
-    return_attributes: "beauty,age,gender",
-  }
-  alert('button clicked');
-  console.log(imgURL)
-  console.log(data);
+function doubleSearch(htmlsrc, htmlsearch) {
+  var fileList = $('input').prop('files'); // the array, not used just as a reminder
+  var imgFile = $('input').prop('files')[0];
+  const preview = document.querySelector('img')
+  console.log($('input')[0])
+  console.log($('input')[0].files[0])
+  console.log(fileList);
 
   function googleSearch(searchVar) {
 
@@ -24,25 +21,84 @@ function doubleSearch(imgURL) {
     })
   }
 
-  function scanFace() {
+  function scanFace(file64) {
+    const data = {
+      api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
+      api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
+      image_base64: file64,
+      return_landmark: "1",
+      return_attributes: "age,gender,skinstatus", // more options available, emotion, smile, ethnicity etc.
+    }
+    console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?"
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
     }).then(function (response) {
-      var faceInfo = response.faces[0].attributes.age.value;
+      var faceInfoAge = response.faces[0].attributes.age.value;
+      var faceInfoGender = response.faces[0].attributes.gender.value;
+      var faceInfoSkinAcne = response.faces[0].attributes.skinstatus.acne;
+      var faceInfoSkinDarkCircle = response.faces[0].attributes.skinstatus.dark_circle;
+      var faceInfoSkinHealth = response.faces[0].attributes.skinstatus.health;
+      // will need to make a conditional statement for what google searches.
       console.log(response);
-      console.log(faceInfo)
-      googleSearch(faceInfo);
+      console.log(faceInfoAge)
+      googleSearch(faceInfoAge);
+    })
+  }
+
+  function scanFaceHTML(link) {
+    preview.src = $('#imgURL').val();
+    const data = {
+      api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
+      api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
+      image_url: link,
+      return_landmark: "1",
+      return_attributes: "age,gender,skinstatus", // more options available, emotion, smile, ethnicity etc.
+    }
+    console.log(data);
+    var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?"
+    $.ajax({
+      url: queryURL,
+      method: "POST",
+      data: data,
+    }).then(function (response) {
+      var faceInfoAge = response.faces[0].attributes.age.value;
+      var faceInfoGender = response.faces[0].attributes.gender.value;
+      var faceInfoSkinAcne = response.faces[0].attributes.skinstatus.acne;
+      var faceInfoSkinDarkCircle = response.faces[0].attributes.skinstatus.dark_circle;
+      var faceInfoSkinHealth = response.faces[0].attributes.skinstatus.health;
+      // will need to make a conditional statement for what google searches.
+      console.log(response);
+      console.log(faceInfoAge)
+      googleSearch(faceInfoAge);
     })
 
   }
 
-  // googleSearch();
-  scanFace();
-}
+  // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
+  function encodeIMG() {
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      console.log(reader.result); // base64 conversion result
+      preview.src = reader.result; // displays image on site
+      scanFace(reader.result);
+    }
+    reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
+  }
 
+  if (htmlsearch === true) {
+    scanFaceHTML(htmlsrc);
+  } else {
+    encodeIMG();
+  }
+}
+//currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
-  doubleSearch($('#imgURL').val());
+  doubleSearch($('#imgURL').val(), true);
+})
+
+$("#fileSubmit").on("click", function () {
+  doubleSearch();
 })
