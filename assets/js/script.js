@@ -1,3 +1,4 @@
+=======
 
 // A file input's value attribute contains a DOMString that represents the path to the selected file(s)
 // $('input')[0].files[0] - path to stored img on webpage
@@ -30,21 +31,17 @@ function doubleSearch(htmlsrc, htmlsearch) {
       return_attributes: "age,gender,skinstatus", // more options available, emotion, smile, ethnicity etc.
     }
     console.log(data);
-    var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?"
+    
+    var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
     }).then(function (response) {
-      var faceInfoAge = response.faces[0].attributes.age.value;
-      var faceInfoGender = response.faces[0].attributes.gender.value;
-      var faceInfoSkinAcne = response.faces[0].attributes.skinstatus.acne;
-      var faceInfoSkinDarkCircle = response.faces[0].attributes.skinstatus.dark_circle;
-      var faceInfoSkinHealth = response.faces[0].attributes.skinstatus.health;
-      // will need to make a conditional statement for what google searches.
+
       console.log(response);
-      console.log(faceInfoAge)
-      googleSearch(faceInfoAge);
+      // googleSearch(faceInfoAge);
     })
   }
 
@@ -54,25 +51,19 @@ function doubleSearch(htmlsrc, htmlsearch) {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
       image_url: link,
-      return_landmark: "1",
-      return_attributes: "age,gender,skinstatus", // more options available, emotion, smile, ethnicity etc.
+
     }
     console.log(data);
-    var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?"
+    var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
+
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
-    }).then(function (response) {
-      var faceInfoAge = response.faces[0].attributes.age.value;
-      var faceInfoGender = response.faces[0].attributes.gender.value;
-      var faceInfoSkinAcne = response.faces[0].attributes.skinstatus.acne;
-      var faceInfoSkinDarkCircle = response.faces[0].attributes.skinstatus.dark_circle;
-      var faceInfoSkinHealth = response.faces[0].attributes.skinstatus.health;
-      // will need to make a conditional statement for what google searches.
+
       console.log(response);
-      console.log(faceInfoAge)
-      googleSearch(faceInfoAge);
+      // googleSearch(faceInfoAge);
+
     })
 
   }
