@@ -37,23 +37,30 @@
         <div class="medium-6 cell">
           <img src="" />
           <label>Upload A File Below!
-            <input type="file" accept="image/png, image/jpeg" placeholder="Upload your img here!" />
+            <input type="file" id="fileIMG" accept="image/png, image/jpeg" placeholder="Upload your img here!" />
             <a href="#" class="button radius bordered shadow primary" id="fileSubmit">Submit</a>
           </label>
         </div>
-
-
-
+        
+        
+        
         <div class="medium-6 cell">
           <img src="" />
           <label>Paste Your Link Below
             <input type="text" id="imgURL" placeholder="Input your img link here!" />
             <a href="#" class="button rounded bordered shadow primary" id="submitButton">Submit</a>
           </label>
+          <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12 error"></div>
+              <div class="cell medium-12 error2"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </form>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"

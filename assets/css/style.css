@@ -32,6 +32,16 @@ color: navy;
 .Joy{
  color: mediumaquamarine ;
 }
+
+.error {
+    font-size: 40px;
+    color: red;
+}
+
+.error2 {
+    font-size: 40px;
+    color: crimson;
+}
 /* .button{
 
 } */
