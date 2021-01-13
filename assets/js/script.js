@@ -22,6 +22,7 @@ function doubleSearch(htmlsrc, htmlinput) {
   }
 
   function scanFace(file64) {
+    $('.error').text("");
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
@@ -33,6 +34,9 @@ function doubleSearch(htmlsrc, htmlinput) {
       url: queryURL,
       method: "POST",
       data: data,
+      error: function () {
+        $('.error').text("There was an error with your picture! It was larger than 2MB!")
+      }
     }).then(function (response) {
       // will need to make a conditional statement for what google searches.
       console.log(response);
@@ -44,16 +48,35 @@ function doubleSearch(htmlsrc, htmlinput) {
       var faceAcne = response.result.acne.value;
       var faceAcneConfidence = response.result.acne.confidence;
       var oilySkin = response.result.skin_type.details[0].value;
+      var oilySkinConfidence = response.result.skin_type.details[0].confidence;
       var drySkin = response.result.skin_type.details[1].value;
+      var drySkinConfidence = response.result.skin_type.details[1].confidence;
       var normalSkin = response.result.skin_type.details[2].value;
       var mixedSkin = response.result.skin_type.details[3].value;
+      var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      // googleSearch(faceAcne); // if faceAcne.value = 1 {googleSearch(faceAcne)} - something like this
+      //
+      if (faceAcne === 1 && faceAcneConfidence >= .70) {
+        googleSearch("Acne medication")
+      }
+      if (oilySkin === 1 && oilySkinConfidence >= .70) {
+        googleSearch("oily skin products")
+      }
+      if (drySkin === 1 && drySkinConfidence >= .70) {
+        googleSearch("dry skin products")
+      }
+      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+        googleSearch("combination skin products")
+      }
+      if (darkCircle === 1 && darkCircleConfidence >= .70) {
+        googleSearch("dark circles")
+      }
     })
   }
 
   function scanFaceHTML() {
+    $('.error').text("");
     preview.src = $('#imgURL').val();
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -66,18 +89,39 @@ function doubleSearch(htmlsrc, htmlinput) {
       url: queryURL,
       method: "POST",
       data: data,
+      error: function () {
+        $('.error').text("There was an error with your picture! It was larger than 2MB!")
+      }
     }).then(function (response) {
       // will need to make a conditional statement for what google searches.
       console.log(response);
       var faceAcne = response.result.acne.value;
       var faceAcneConfidence = response.result.acne.confidence;
       var oilySkin = response.result.skin_type.details[0].value;
+      var oilySkinConfidence = response.result.skin_type.details[0].confidence;
       var drySkin = response.result.skin_type.details[1].value;
+      var drySkinConfidence = response.result.skin_type.details[1].confidence;
       var normalSkin = response.result.skin_type.details[2].value;
       var mixedSkin = response.result.skin_type.details[3].value;
+      var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      // googleSearch(faceInfoAge);
+
+      if (faceAcne === 1 && faceAcneConfidence >= .70) {
+        googleSearch("Acne medication")
+      }
+      if (oilySkin === 1 && oilySkinConfidence >= .70) {
+        googleSearch("oily skin products")
+      }
+      if (drySkin === 1 && drySkinConfidence >= .70) {
+        googleSearch("dry skin products")
+      }
+      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+        googleSearch("combination skin products")
+      }
+      if (darkCircle === 1 && darkCircleConfidence >= .70) {
+        googleSearch("dark circles")
+      }
     })
 
   }
