@@ -1,14 +1,14 @@
+const preview = document.querySelector('img');
+var imgResult = "";
 
 //change query URL to skinanalyze API
 // A file input's value attribute contains a DOMString that represents the path to the selected file(s)
 // $('input')[0].files[0] - path to stored img on webpage
 
 function doubleSearch(htmlsrc, htmlinput) {
+  $('.error').text("");
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
-  var imgFile = $('input').prop('files')[0];
-  const preview = document.querySelector('img');
-  console.log(fileList);
-  console.log(imgFile);
+  console.log(imgResult);
 
   function googleSearch(searchVar) {
 
@@ -22,13 +22,11 @@ function doubleSearch(htmlsrc, htmlinput) {
   }
 
   function scanFace(file64) {
-    $('.error').text("");
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
       image_base64: file64,
     }
-    console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
     $.ajax({
       url: queryURL,
@@ -52,11 +50,18 @@ function doubleSearch(htmlsrc, htmlinput) {
       var drySkin = response.result.skin_type.details[1].value;
       var drySkinConfidence = response.result.skin_type.details[1].confidence;
       var normalSkin = response.result.skin_type.details[2].value;
+      var normalSkinConfidence = response.result.skin_type.details[2].confidence;
       var mixedSkin = response.result.skin_type.details[3].value;
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      //
+      var warning = response.warning[0];
+
+      if (warning === !undefined) {
+
+        $('.error2').text(`Warning: ${warning}`);
+      }
+
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
       }
@@ -72,11 +77,13 @@ function doubleSearch(htmlsrc, htmlinput) {
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
         googleSearch("dark circles")
       }
+      if (normalSkin === 1 && normalSkinConfidence >= .70) {
+        $('.error').text("You're beautiful just the way you are.")
+      }
     })
   }
 
   function scanFaceHTML() {
-    $('.error').text("");
     preview.src = $('#imgURL').val();
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -102,10 +109,17 @@ function doubleSearch(htmlsrc, htmlinput) {
       var drySkin = response.result.skin_type.details[1].value;
       var drySkinConfidence = response.result.skin_type.details[1].confidence;
       var normalSkin = response.result.skin_type.details[2].value;
+      var normalSkinConfidence = response.result.skin_type.details[2].confidence;
       var mixedSkin = response.result.skin_type.details[3].value;
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
+      var warning = response.warning[0];
+
+      if (warning === !undefined) {
+
+        $('.error2').text(`Warning: ${warning}`);
+      }
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
@@ -122,32 +136,41 @@ function doubleSearch(htmlsrc, htmlinput) {
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
         googleSearch("dark circles")
       }
+      if (normalSkin === 1 && normalSkinConfidence >= .70 && faceAcne === 0 && darkCircle === 0) {
+        $('.error').text("You're beautiful just the way you are.")
+      }
     })
 
-  }
-
-  // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
-  function encodeIMG() {
-    var reader = new FileReader();
-    reader.onloadend = function () {
-      console.log(reader.result); // base64 conversion result
-      preview.src = reader.result; // displays image on site
-      scanFace(reader.result);
-    }
-    reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
   }
 
   if (htmlinput === true) {
     scanFaceHTML();
   } else {
-    encodeIMG();
+    scanFace(imgResult);
   }
 }
+
+// when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
+function encodeIMG() {
+  var imgFile = $('input').prop('files')[0];
+  if (imgFile.size >= 2000000) {
+    $('.error').text("Your image is larger than 2mb!")
+  }
+  var reader = new FileReader();
+  reader.onloadend = function () {
+    console.log(reader.result); // base64 conversion result
+    preview.src = reader.result;
+    imgResult = reader.result; // displays image on site
+    return imgResult;
+  }
+  reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
+}
+
 //currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
-  doubleSearch($('#imgURL').val(), true);
-})
+  doubleSearch($('#imgURL').val(), true)
+});
 
-$("#fileSubmit").on("click", function () {
-  doubleSearch();
-})
+$("#fileSubmit").on("click", doubleSearch);
+// when we upload a file, we encode it
+$('#fileIMG').on("change", encodeIMG);
