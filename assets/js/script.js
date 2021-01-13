@@ -18,9 +18,21 @@ function doubleSearch(htmlsrc, htmlinput) {
       method: "GET"
     }).then(function (response) {
       console.log(response);
+      var googleArray = response.items;
+      var div = document.createElement("div")
+      // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
+
+      for (i = 0; i < googleArray.length; i++) {
+        // console.log(i);
+        // if ($.isArray(response.items[i].pagemap.metatags)) {
+        //   console.log('Its an Array')
+        // } else {
+        //   console.log(i);
+        $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+        // }
+      }
     })
   }
-
   function scanFace(file64) {
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -124,18 +136,18 @@ function doubleSearch(htmlsrc, htmlinput) {
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
       }
-      if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        googleSearch("oily skin products")
-      }
-      if (drySkin === 1 && drySkinConfidence >= .70) {
-        googleSearch("dry skin products")
-      }
-      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        googleSearch("combination skin products")
-      }
-      if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        googleSearch("dark circles")
-      }
+      // if (oilySkin === 1 && oilySkinConfidence >= .70) {
+      //   googleSearch("oily skin products")
+      // }
+      // if (drySkin === 1 && drySkinConfidence >= .70) {
+      //   googleSearch("dry skin products")
+      // }
+      // if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+      //   googleSearch("combination skin products")
+      // }
+      // if (darkCircle === 1 && darkCircleConfidence >= .70) {
+      //   googleSearch("dark circles")
+      // }
       if (normalSkin === 1 && normalSkinConfidence >= .70 && faceAcne === 0 && darkCircle === 0) {
         $('.error').text("You're beautiful just the way you are.")
       }
