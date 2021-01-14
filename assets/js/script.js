@@ -65,7 +65,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper')) {
+      if (warning.includes('improper') === true) {
         $('.error2').text(`Warning: ${response.warning[0]}`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
@@ -121,7 +121,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper')) {
+      if (warning.includes('improper') === true) {
         $('.error2').text(`Warning: ${response.warning[0]}`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
