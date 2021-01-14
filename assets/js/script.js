@@ -1,3 +1,5 @@
+$(document).foundation()
+
 const preview = document.querySelector('img');
 var imgResult = "";
 
