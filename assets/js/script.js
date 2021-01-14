@@ -20,8 +20,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       console.log(response);
       var googleArray = response.items;
       // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
-      for (i = 0; i < 3; i++) {
-        console.log(i);
+      for (i = 0; i < googleArray.length; i++) {
         if (response.items[i].link.includes('/p/') === true) {
           $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
         } else { }
@@ -63,10 +62,8 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      var warning = response.warning[0];
 
-      if (warning === !undefined) {
-
+      if (response.warning.includes("improper") === true) {
         $('.error2').text(`Warning: ${warning}`);
       }
 
@@ -98,7 +95,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
       image_url: htmlsrc,
     }
-    console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
     $.ajax({
       url: queryURL,
@@ -122,10 +118,8 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      var warning = response.warning[0];
 
-      if (warning === !undefined) {
-
+      if (response.warning.includes("improper") === true) {
         $('.error2').text(`Warning: ${warning}`);
       }
 
@@ -166,9 +160,8 @@ function encodeIMG() {
   }
   var reader = new FileReader();
   reader.onloadend = function () {
-    console.log(reader.result); // base64 conversion result
-    preview.src = reader.result;
-    imgResult = reader.result; // displays image on site
+    preview.src = reader.result; // displays image on site
+    imgResult = reader.result; // base64 conversion result 
     return imgResult;
   }
   reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
@@ -181,4 +174,8 @@ $("#submitButton").on("click", function () {
 
 $("#fileSubmit").on("click", doubleSearch);
 // when we upload a file, we encode it
-$('#fileIMG').on("change", encodeIMG);
+$('#fileIMG').on("change", function () {
+  $('.error').text("")
+  $('.error2').text("")
+  encodeIMG();
+});

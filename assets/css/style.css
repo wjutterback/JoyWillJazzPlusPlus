@@ -1,40 +1,42 @@
-section {
-  margin: 2rem;
-  padding: 2rem;
+section{
+    
+    margin: 2rem;
+    padding: 2rem;
 }
-body {
-  font-family: "Montserrat", sans-serif;
-}
-
-h1,
-h2 {
-  font-size: x-large;
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color
 }
 
-h3 {
-  font-size: large;
-}
-.Jazz {
-  color: darkorange;
+h1,h2{
+    font-size: x-large;
 }
 
-.Will {
-  color: navy;
+h3{
+    font-size: large;
+}
+.Jazz{
+    color: darkorange;
 }
 
-.Joy {
-  color: mediumaquamarine;
+.Will{
+color: navy;
+}
+
+.Joy{
+ color: mediumaquamarine ;
 }
 
 .error {
-  font-size: 40px;
-  color: red;
+    font-size: 40px;
+    color: red;
 }
 
-.error2 {
-  font-size: 40px;
-  color: crimson;
+.error {
+    font-size: 40px;
+    color: red;
 }
 /* .button{
 
 } */
+
