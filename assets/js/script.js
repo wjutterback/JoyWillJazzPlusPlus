@@ -19,20 +19,15 @@ function doubleSearch(htmlsrc, htmlinput) {
     }).then(function (response) {
       console.log(response);
       var googleArray = response.items;
-      var div = document.createElement("div")
       // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
-
       for (i = 0; i < googleArray.length; i++) {
-        // console.log(i);
-        // if ($.isArray(response.items[i].pagemap.metatags)) {
-        //   console.log('Its an Array')
-        // } else {
-        //   console.log(i);
-        $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
-        // }
+        if (response.items[i].link.includes('/p/') === true) {
+          $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+        } else { }
       }
     })
   }
+
   function scanFace(file64) {
     const data = {
       api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -67,10 +62,8 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      var warning = response.warning[0];
 
-      if (warning === !undefined) {
-
+      if (response.warning.includes("improper") === true) {
         $('.error2').text(`Warning: ${warning}`);
       }
 
@@ -102,7 +95,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
       image_url: htmlsrc,
     }
-    console.log(data);
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
     $.ajax({
       url: queryURL,
@@ -126,28 +118,26 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
-      var warning = response.warning[0];
 
-      if (warning === !undefined) {
-
+      if (response.warning.includes("improper") === true) {
         $('.error2').text(`Warning: ${warning}`);
       }
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
       }
-      // if (oilySkin === 1 && oilySkinConfidence >= .70) {
-      //   googleSearch("oily skin products")
-      // }
-      // if (drySkin === 1 && drySkinConfidence >= .70) {
-      //   googleSearch("dry skin products")
-      // }
-      // if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-      //   googleSearch("combination skin products")
-      // }
-      // if (darkCircle === 1 && darkCircleConfidence >= .70) {
-      //   googleSearch("dark circles")
-      // }
+      if (oilySkin === 1 && oilySkinConfidence >= .70) {
+        googleSearch("oily skin products")
+      }
+      if (drySkin === 1 && drySkinConfidence >= .70) {
+        googleSearch("dry skin products")
+      }
+      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+        googleSearch("combination skin products")
+      }
+      if (darkCircle === 1 && darkCircleConfidence >= .70) {
+        googleSearch("dark circles")
+      }
       if (normalSkin === 1 && normalSkinConfidence >= .70 && faceAcne === 0 && darkCircle === 0) {
         $('.error').text("You're beautiful just the way you are.")
       }
@@ -170,9 +160,8 @@ function encodeIMG() {
   }
   var reader = new FileReader();
   reader.onloadend = function () {
-    console.log(reader.result); // base64 conversion result
-    preview.src = reader.result;
-    imgResult = reader.result; // displays image on site
+    preview.src = reader.result; // displays image on site
+    imgResult = reader.result; // base64 conversion result 
     return imgResult;
   }
   reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
@@ -185,4 +174,8 @@ $("#submitButton").on("click", function () {
 
 $("#fileSubmit").on("click", doubleSearch);
 // when we upload a file, we encode it
-$('#fileIMG').on("change", encodeIMG);
+$('#fileIMG').on("change", function () {
+  $('.error').text("")
+  $('.error2').text("")
+  encodeIMG();
+});
