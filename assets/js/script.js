@@ -68,22 +68,32 @@ function doubleSearch(htmlsrc, htmlinput) {
       }
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
-        googleSearch("Acne medication")
+        $("<div>").text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
+        googleSearch("Acne medication");
       }
       if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        googleSearch("oily skin products")
+        $("<div>").text('You have oily skin. Here are some products that might work for you!').appendTo($('#message'));
+        googleSearch("oily skin products");
       }
+
       if (drySkin === 1 && drySkinConfidence >= .70) {
+        $("<div>").text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dry skin products")
+
+
       }
       if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+        $("<div>").text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("combination skin products")
+
       }
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
+        $("<div>").text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dark circles")
+
       }
       if (normalSkin === 1 && normalSkinConfidence >= .70) {
-        $('.error').text("You're beautiful just the way you are.")
+        $("<div>").text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
       }
     })
   }
@@ -125,6 +135,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
+
       }
       if (oilySkin === 1 && oilySkinConfidence >= .70) {
         googleSearch("oily skin products")
