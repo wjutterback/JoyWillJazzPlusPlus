@@ -8,6 +8,7 @@ var imgResult = "";
 // $('input')[0].files[0] - path to stored img on webpage
 
 function doubleSearch(htmlsrc, htmlinput) {
+
   $('.error').text("");
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
   console.log(imgResult);
@@ -25,7 +26,13 @@ function doubleSearch(htmlsrc, htmlinput) {
       for (i = 0; i < googleArray.length; i++) {
         console.log(i);
         if (response.items[i].link.includes('/p/') === true) {
-          $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          if (searchVar === "Acne medication") {
+            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
+            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "dark circles") {
+            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          }
         } else { }
       }
     })
@@ -67,8 +74,9 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
@@ -123,8 +131,10 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
