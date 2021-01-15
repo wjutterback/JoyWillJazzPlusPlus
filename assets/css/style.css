@@ -47,10 +47,13 @@ h3 {
 }
 
 .resultdisplay a img {
-  width: 150px;
+  width: 130px;
   border: 1px solid green;
   margin-bottom: 3px;
   float: right;
+}
+
+#skindisplay {
 }
 /* .button{
 
