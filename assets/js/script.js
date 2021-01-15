@@ -111,7 +111,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 
       }
       if (normalSkin === 1 && normalSkinConfidence >= .70) {
-        $("div").text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
+        $("div").text('You have perfect skin!').appendTo($('#message'));
       }
     })
   }
