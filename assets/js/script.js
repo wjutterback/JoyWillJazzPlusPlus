@@ -23,6 +23,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       var googleArray = response.items;
       // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
       for (i = 0; i < googleArray.length; i++) {
+        console.log(i);
         if (response.items[i].link.includes('/p/') === true) {
           $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
         } else { }
@@ -64,11 +65,11 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
+      var warning = response.warning[0];
 
-      if (response.warning.includes("improper") === true) {
-        $('.error2').text(`Warning: ${warning}`);
+      if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: ${response.warning[0]}`);
       }
-
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
       }
@@ -120,11 +121,11 @@ function doubleSearch(htmlsrc, htmlinput) {
       var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
+      var warning = response.warning[0];
 
-      if (response.warning.includes("improper") === true) {
-        $('.error2').text(`Warning: ${warning}`);
+      if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: ${response.warning[0]}`);
       }
-
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
       }
@@ -171,13 +172,19 @@ function encodeIMG() {
 
 //currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
+  $('.error').text("");
+  $('.error2').text("");
   doubleSearch($('#imgURL').val(), true)
 });
 
-$("#fileSubmit").on("click", doubleSearch);
+$("#fileSubmit").on("click", function () {
+  $('.error').text("");
+  $('.error2').text("");
+  doubleSearch()
+});
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
-  $('.error').text("")
-  $('.error2').text("")
+  $('.error').text("");
+  $('.error2').text("");
   encodeIMG();
 });
