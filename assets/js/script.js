@@ -26,7 +26,13 @@ function doubleSearch(htmlsrc, htmlinput) {
       for (i = 0; i < googleArray.length; i++) {
         console.log(i);
         if (response.items[i].link.includes('/p/') === true) {
-          $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          if (searchVar === "Acne medication") {
+            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
+            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "dark circles") {
+            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          }
         } else { }
       }
     })
