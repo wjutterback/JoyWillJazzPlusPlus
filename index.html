@@ -18,7 +18,8 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu">
-          <li class="menu-text"><span class="Joy">Joy</span> <span class="Will">Will </span>  <span class="Jazz">Jazz</span> ➕➕</li>
+          <li class="menu-text"><span class="Joy">Joy</span> <span class="Will">Will </span> <span
+              class="Jazz">Jazz</span> ➕➕</li>
           <h1></h1>
         </ul>
         </li>
@@ -28,32 +29,87 @@
       </div>
     </div>
   </header>
+<!-- This demo uses flex grid but you can use float grid too -->
 
-  <form>
+<div class="row">
+  <div class="columns">
+    <h2>JoyWillJazz++</h2>
+    <p>A face analyzing app that will scan your picture and give you product selections for your problem areas</p>
+  </div>
+</div>
 
-
+<div class="row">
+  <div class="columns">
+    <ul class="accordion" data-accordion>
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#" class="accordion-title">Directions for using JoyWillJazz++</a>
+    <div class="accordion-content" data-tab-content >
+      <p>It is so easy! Choose one of the options below as a way to upload your photo. We will handle the reset.</p>
+    
+    </div>
+  </li>
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Upload a file from your device</a>
+    <div class="accordion-content" data-tab-content>
+      <form>
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="medium-6 cell">
-          <img src="" />
-          <label>Upload A File Below!
-            <input type="file" accept="image/png, image/jpeg" placeholder="Upload your img here!" />
-            <a href="#" class="button radius bordered shadow primary" id="fileSubmit">Submit</a>
-          </label>
-        </div>
-
-
-
-        <div class="medium-6 cell">
-          <img src="" />
-          <label>Paste Your Link Below
-            <input type="text" id="imgURL" placeholder="Input your img link here!" />
-            <a href="#" class="button rounded bordered shadow primary" id="submitButton">Submit</a>
-          </label>
+          
+          <label>Upload A File Below!</label>
+            <input type="file" id="fileIMG" accept="image/png, image/jpeg" placeholder="Upload your img here!" />
+            <button class="button radius bordered shadow primary" id="fileSubmit">Submit</a>
+          
         </div>
       </div>
     </div>
   </form>
+    </div>
+  </li>
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Paste a link from the internet</a>
+    <div class="accordion-content" data-tab-content>
+    <form>
+    <div class="medium-6 cell">
+      
+      <label>Paste Your Link Below
+        <input type="text" id="imgURL" placeholder="Input your img link here!" />
+        <a href="#" class="button primary" id="submitButton">Submit</a>
+      </label>
+</form> 
+
+      <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+        </div>
+      </div>
+    </div>
+  </div>    
+    </div>
+  </li>
+</ul>
+ </div>
+</div>
+
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-12 end error "></div>
+        <div class="cell medium-12 end error2"></div>
+        <div class="grid-container imgdisplay"></div>
+        <img src="" />
+        <img src="" />
+      </div>
+    </div>
+  </div>
+
+
+
+ 
+
+
+  
+
+  
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"

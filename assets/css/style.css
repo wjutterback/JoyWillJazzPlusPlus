@@ -1,38 +1,40 @@
-$button-palette: (
-   
-    primary: #ff0000,
-    purple: #bb00ff
-);
-
-section{
-    
-    margin: 2rem;
-    padding: 2rem;
+section {
+  margin: 2rem;
+  padding: 2rem;
 }
-body{
-    font-family: 'Montserrat', sans-serif;
-    background-color
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
-h1,h2{
-    font-size: x-large;
+h1,
+h2 {
+  font-size: x-large;
 }
 
-h3{
-    font-size: large;
+h3 {
+  font-size: large;
 }
-.Jazz{
-    color: darkorange;
-}
-
-.Will{
-color: navy;
+.Jazz {
+  color: darkorange;
 }
 
-.Joy{
- color: mediumaquamarine ;
+.Will {
+  color: navy;
+}
+
+.Joy {
+  color: mediumaquamarine;
+}
+
+.error {
+  font-size: 40px;
+  color: red;
+}
+
+.error2 {
+  font-size: 40px;
+  color: crimson;
 }
 /* .button{
 
 } */
-
