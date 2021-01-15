@@ -35,6 +35,11 @@ h3 {
   font-size: 40px;
   color: crimson;
 }
+
+.imgdisplay {
+  height: 300px;
+  width: 400px;
+}
 /* .button{
 
 } */

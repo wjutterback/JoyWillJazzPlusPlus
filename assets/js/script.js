@@ -68,8 +68,9 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
@@ -124,8 +125,10 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
