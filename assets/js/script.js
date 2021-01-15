@@ -1,3 +1,5 @@
+$(document).foundation()
+
 const preview = document.querySelector('img');
 var imgResult = "";
 
@@ -6,6 +8,7 @@ var imgResult = "";
 // $('input')[0].files[0] - path to stored img on webpage
 
 function doubleSearch(htmlsrc, htmlinput) {
+
   $('.error').text("");
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
   console.log(imgResult);
@@ -20,10 +23,23 @@ function doubleSearch(htmlsrc, htmlinput) {
       console.log(response);
       var googleArray = response.items;
       // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
+
+      if (searchVar === "Acne medication") {
+        $('.acneresult h1').text("Acne products:")
+      } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
+        $('.skinresult h1').text("Skincare products:")
+      } else if (searchVar === "dark circles") {
+        $('.eyeresult h1').text("Eyecare products:")
+      }
       for (i = 0; i < googleArray.length; i++) {
-        console.log(i);
         if (response.items[i].link.includes('/p/') === true) {
-          $('.imgdisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          if (searchVar === "Acne medication") {
+            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
+            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          } else if (searchVar === "dark circles") {
+            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+          }
         } else { }
       }
     })
@@ -65,8 +81,9 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         $("div").text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
@@ -131,8 +148,10 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
 
-      if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: ${response.warning[0]}`);
+      if (warning === undefined) {
+
+      } else if (warning.includes('improper') === true) {
+        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
         googleSearch("Acne medication")
