@@ -23,8 +23,15 @@ function doubleSearch(htmlsrc, htmlinput) {
       console.log(response);
       var googleArray = response.items;
       // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
+
+      if (searchVar === "Acne medication") {
+        $('.acneresult h1').text("Acne products:")
+      } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
+        $('.skinresult h1').text("Skincare products:")
+      } else if (searchVar === "dark circles") {
+        $('.eyeresult h1').text("Eyecare products:")
+      }
       for (i = 0; i < googleArray.length; i++) {
-        console.log(i);
         if (response.items[i].link.includes('/p/') === true) {
           if (searchVar === "Acne medication") {
             $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
