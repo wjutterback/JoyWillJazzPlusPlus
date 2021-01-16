@@ -3,15 +3,10 @@ $(document).foundation()
 const preview = document.querySelector('img');
 var imgResult = "";
 
-//change query URL to skinanalyze API
-// A file input's value attribute contains a DOMString that represents the path to the selected file(s)
-// $('input')[0].files[0] - path to stored img on webpage
-
 function doubleSearch(htmlsrc, htmlinput) {
-
   $('.error').text("");
+  $('.error2').text("");
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
-  console.log(imgResult);
 
   function googleSearch(searchVar) {
 
@@ -22,7 +17,6 @@ function doubleSearch(htmlsrc, htmlinput) {
     }).then(function (response) {
       console.log(response);
       var googleArray = response.items;
-      // $('.imgdisplay').append(`<a href="${response.items[0].link}"> <img src="${response.items[0].pagemap.cse_thumbnail[0].src}" /></a>`)
 
       if (searchVar === "Acne medication") {
         $('.acneresult h1').text("Acne products:")
@@ -45,28 +39,31 @@ function doubleSearch(htmlsrc, htmlinput) {
     })
   }
 
-  function scanFace(file64) {
-    const data = {
-      api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
-      api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
-      image_base64: file64,
+  function scanFace() {
+
+    if (htmlinput === true) {
+      preview.src = htmlsrc;
+      var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
+      var data = {
+        api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
+        api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
+        image_url: htmlsrc,
+      }
+    } else {
+      var data = {
+        api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
+        api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
+        image_base64: imgResult,
+      }
     }
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
     $.ajax({
       url: queryURL,
       method: "POST",
       data: data,
-      error: function () {
-        $('.error').text("There was an error with your picture! It was larger than 2MB!")
-      }
+      error: error,
     }).then(function (response) {
-      // will need to make a conditional statement for what google searches.
       console.log(response);
-      //skin_type values below
-      // 0	oily skin
-      // 1	dry skin
-      // 2	normal skin
-      // 3	mixed skin
       var faceAcne = response.result.acne.value;
       var faceAcneConfidence = response.result.acne.confidence;
       var oilySkin = response.result.skin_type.details[0].value;
@@ -85,102 +82,40 @@ function doubleSearch(htmlsrc, htmlinput) {
       } else if (warning.includes('improper') === true) {
         $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
+
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
-        $("div").text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
+        $('<div>').text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("Acne medication");
       }
+
       if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        $("div").text('You have oily skin. Here are some products that might work for you!').appendTo($('#message'));
+        $('<div>').text('You have oily skin. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("oily skin products");
       }
 
       if (drySkin === 1 && drySkinConfidence >= .70) {
-        $("div").text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
+        $('<div>').text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dry skin products")
-
-
       }
+
       if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        $("div").text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
+        $('<div>').text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("combination skin products")
-
       }
+
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        $("div").text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
+        $('<div>').text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dark circles")
-
       }
+
       if (normalSkin === 1 && normalSkinConfidence >= .70) {
-        $("div").text('You have perfect skin!').appendTo($('#message'));
+        $('<div>').text('You have perfect skin!').appendTo($('#message'));
       }
     })
   }
 
-  function scanFaceHTML() {
-    preview.src = $('#imgURL').val();
-    const data = {
-      api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
-      api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
-      image_url: htmlsrc,
-    }
-    var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
-    $.ajax({
-      url: queryURL,
-      method: "POST",
-      data: data,
-      error: function () {
-        $('.error').text("There was an error with your picture! It was larger than 2MB!")
-      }
-    }).then(function (response) {
-      // will need to make a conditional statement for what google searches.
-      console.log(response);
-      var faceAcne = response.result.acne.value;
-      var faceAcneConfidence = response.result.acne.confidence;
-      var oilySkin = response.result.skin_type.details[0].value;
-      var oilySkinConfidence = response.result.skin_type.details[0].confidence;
-      var drySkin = response.result.skin_type.details[1].value;
-      var drySkinConfidence = response.result.skin_type.details[1].confidence;
-      var normalSkin = response.result.skin_type.details[2].value;
-      var normalSkinConfidence = response.result.skin_type.details[2].confidence;
-      var mixedSkin = response.result.skin_type.details[3].value;
-      var mixedSkinConfidence = response.result.skin_type.details[3].confidence;
-      var darkCircle = response.result.dark_circle.value;
-      var darkCircleConfidence = response.result.dark_circle.confidence;
-      var warning = response.warning[0];
+  scanFace();
 
-      if (warning === undefined) {
-
-      } else if (warning.includes('improper') === true) {
-        $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
-      }
-      if (faceAcne === 1 && faceAcneConfidence >= .70) {
-        googleSearch("Acne medication")
-
-      }
-      if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        googleSearch("oily skin products")
-      }
-      if (drySkin === 1 && drySkinConfidence >= .70) {
-        googleSearch("dry skin products")
-      }
-      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        googleSearch("combination skin products")
-      }
-      if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        googleSearch("dark circles")
-      }
-      if (normalSkin === 1 && normalSkinConfidence >= .70 && faceAcne === 0 && darkCircle === 0) {
-        $('.error').text("You're beautiful just the way you are.")
-      }
-    })
-
-  }
-
-  if (htmlinput === true) {
-    scanFaceHTML();
-  } else {
-    scanFace(imgResult);
-  }
 }
 
 // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
@@ -200,14 +135,10 @@ function encodeIMG() {
 
 //currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
-  $('.error').text("");
-  $('.error2').text("");
   doubleSearch($('#imgURL').val(), true)
 });
 
 $("#fileSubmit").on("click", function () {
-  $('.error').text("");
-  $('.error2').text("");
   doubleSearch()
 });
 // when we upload a file, we encode it
