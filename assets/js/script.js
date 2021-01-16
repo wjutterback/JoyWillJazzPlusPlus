@@ -43,17 +43,20 @@ function doubleSearch(htmlsrc, htmlinput) {
 
     if (htmlinput === true) {
       preview.src = htmlsrc;
+      imgResult = htmlsrc;
       var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
       var data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_url: htmlsrc,
+        return_landmark: "1"
       }
     } else {
       var data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_base64: imgResult,
+        return_landmark: "1"
       }
     }
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
@@ -110,6 +113,27 @@ function doubleSearch(htmlsrc, htmlinput) {
 
       if (normalSkin === 1 && normalSkinConfidence >= .70) {
         $('<div>').text('You have perfect skin!').appendTo($('#message'));
+      }
+    })
+
+    $.ajax({
+      url: "https://api-us.faceplusplus.com/facepp/v3/detect",
+      method: "POST",
+      data: data,
+    }).then(function (response) {
+      console.log(response);
+      const image = new Image();
+      image.src = imgResult;
+      var canvas = document.getElementById("canvasImg");
+      var ctx = canvas.getContext("2d");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      ctx.drawImage(image, 0, 0);
+      var land = response.faces[0].landmark;
+      // https://stackoverflow.com/questions/9354834/iterate-over-object-literal-values
+      for (var key in land) {
+        console.log(land[key]);
+        ctx.fillRect(land[key].x, land[key].y, 5, 5)
       }
     })
   }
