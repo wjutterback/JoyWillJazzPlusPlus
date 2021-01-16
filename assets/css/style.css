@@ -52,3 +52,7 @@ h3 {
   margin-bottom: 3px;
   float: right;
 }
+
+#message {
+  font-size: 30px;
+}
