@@ -128,9 +128,14 @@ function doubleSearch(htmlsrc, htmlinput) {
       var ctx = canvas.getContext("2d");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
-      ctx.drawImage(image, 0, 0)
+      ctx.drawImage(image, 0, 0);
+      var land = response.faces[0].landmark;
+      // https://stackoverflow.com/questions/9354834/iterate-over-object-literal-values
+      for (var key in land) {
+        console.log(land[key]);
+        ctx.fillRect(land[key].x, land[key].y, 5, 5)
+      }
     })
-    // $('.imgdisplay').appendChild(canvas);
   }
 
   scanFace();
