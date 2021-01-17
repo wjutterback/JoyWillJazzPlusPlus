@@ -6,6 +6,9 @@ var imgResult = "";
 function doubleSearch(htmlsrc, htmlinput) {
   $('.error').text("");
   $('.error2').text("");
+  $('#message').empty();
+  $('.resultdisplay h1').text('');
+  $('.erase').empty();
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
 
   function googleSearch(searchVar) {
