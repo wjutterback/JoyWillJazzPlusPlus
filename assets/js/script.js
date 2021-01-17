@@ -129,6 +129,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
+
       const { landmark } = response.face;
       const parts = Object.keys(landmark);
       const coords = [];
