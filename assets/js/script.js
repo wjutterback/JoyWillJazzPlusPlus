@@ -129,86 +129,20 @@ function doubleSearch(htmlsrc, htmlinput) {
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
-      var landFace = response.face.landmark.face;
-      var landLeftEye = response.face.landmark.left_eye;
-      var landLeftEyeEyelid = response.face.landmark.left_eye_eyelid;
-      var landLeftEyebrow = response.face.landmark.left_eyebrow;
-      var landMouth = response.face.landmark.mouth;
-      var landNose = response.face.landmark.nose;
-      var landRightEye = response.face.landmark.right_eye;
-      var landRightEyelid = response.face.landmark.right_eyelid;
-      var landRightEyebrow = response.face.landmark.right_eyebrow;
-
-      var landFaceArr = [];
-      var landFaceKeys = Object.keys(response.face.landmark.face);
-      landFaceKeys.forEach(function (key) {
-        landFaceArr.push(response.face.landmark.face[key])
-      })
-      console.log(landFaceArr);
-
-      landFaceArr.forEach(function (key) {
-        ctx.fillRect(key.x, key.y, 5, 5)
+      const { landmark } = response.face;
+      const parts = Object.keys(landmark);
+      const coords = [];
+      parts.forEach(part => {
+        const partKeys = Object.keys(landmark[part]);
+        partKeys.forEach((coord) => {
+          coords.push(landmark[part][coord]);
+        })
       });
-
-      const keys = [];
-
-      var landmarkKeys = Object.keys(response.face.landmark);
-      console.log(landmarkKeys)
-      landmarkKeys.forEach(function (key) {
-        keys.push(response.face.landmark[key]);
-        keys.sort();
-        console.log(keys)
+      coords.forEach(function (value) {
+        ctx.fillRect(value.x, value.y, 2, 2)
       })
-
-      const keysa = [];
-
-      keys.forEach(function (key) {
-        keysa.push(...Object.keys(key))
-      })
-      console.log(keysa);
-
-      keysa.forEach(function (key) {
-        if (key.includes('lower_lip_0')) {
-          console.log(keys[7])
-          // console.log(keys[7][key])
-        }
-        // if (key.includes('face') === true) {
-        //   ctx.fillRect(keys[key].x, keys[key].y, 5, 5)
-        // }
-        // else if (key.includes('left_eye_eyelid') === true) {
-        //   ctx.fillRect(keys[key].x, keys[key].y, 5, 5)
-        // }
-        // else if (key.includes('left_eyebrow') === true) {
-        //   ctx.fillRect(keys[key].x, keys[key].y, 5, 5);
-        // } else if (key.includes('left_eye') === true) {
-        //   ctx.fillRect(keys[key].x, keys[key].y, 5, 5)
-        // }
-      })
-
-
-      // keys.forEach()
-      // keysa.forEach(function (key) {
-      //   keysb.push(response)
-      // })
-
-      // keysa.push()
-
-      // // var keys = Object.keys(land);
-      // keysa.forEach(function (key) {
-      //   console.log(key);
 
     });
-    // console.log(keysa);
-
-    // ctx.fillRect(key.x, key.y, 5, 5)
-    // })
-
-
-    // for (var key in land) {
-    //   console.log(land[key]);
-    //   ctx.fillRect(land[key].x, land[key].y, 5, 5)
-    // }
-    // https://stackoverflow.com/questions/9354834/iterate-over-object-literal-values
   };
   scanFace();
 }
