@@ -49,14 +49,14 @@ function doubleSearch(htmlsrc, htmlinput) {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_url: htmlsrc,
-        return_landmark: "1"
+        return_landmark: "all"
       }
     } else {
       var data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_base64: imgResult,
-        return_landmark: "1"
+        return_landmark: "all"
       }
     }
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
@@ -117,29 +117,34 @@ function doubleSearch(htmlsrc, htmlinput) {
     })
 
     $.ajax({
-      url: "https://api-us.faceplusplus.com/facepp/v3/detect",
+      url: "https://api-us.faceplusplus.com/facepp/v1/face/thousandlandmark",
       method: "POST",
       data: data,
     }).then(function (response) {
       console.log(response);
-      const image = new Image();
+      var image = new Image();
       image.src = imgResult;
       var canvas = document.getElementById("canvasImg");
       var ctx = canvas.getContext("2d");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
-      var land = response.faces[0].landmark;
-      // https://stackoverflow.com/questions/9354834/iterate-over-object-literal-values
-      for (var key in land) {
-        console.log(land[key]);
-        ctx.fillRect(land[key].x, land[key].y, 5, 5)
-      }
-    })
-  }
+      const { landmark } = response.face;
+      const parts = Object.keys(landmark);
+      const coords = [];
+      parts.forEach(part => {
+        const partKeys = Object.keys(landmark[part]);
+        partKeys.forEach((coord) => {
+          coords.push(landmark[part][coord]);
+        })
+      });
+      coords.forEach(function (value) {
+        ctx.fillRect(value.x, value.y, 2, 2)
+      })
 
+    });
+  };
   scanFace();
-
 }
 
 // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
