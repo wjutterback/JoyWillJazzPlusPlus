@@ -6,6 +6,9 @@ var imgResult = "";
 function doubleSearch(htmlsrc, htmlinput) {
   $('.error').text("");
   $('.error2').text("");
+  $('#message').empty();
+  $('.resultdisplay h1').text('');
+  $('.erase').empty();
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
 
   function googleSearch(searchVar) {
@@ -129,6 +132,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
+
       const { landmark } = response.face;
       const parts = Object.keys(landmark);
       const coords = [];
