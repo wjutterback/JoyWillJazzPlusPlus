@@ -93,17 +93,17 @@ function doubleSearch(htmlsrc, htmlinput) {
       }
 
       if (drySkin === 1 && drySkinConfidence >= .70) {
-        $('.skinresult h1').text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
+        $('.skinresult h1').text('You have dry skin. Here are some products that might work for you!');
         googleSearch("dry skin products")
       }
 
       if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        $('.skinresult h1').text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
+        $('.skinresult h1').text('You have combined or mixed skin . Here are some products that might work for you!');
         googleSearch("combination skin products")
       }
 
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        $('.eyeresult h1').text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
+        $('.eyeresult h1').text('You have dark circles. Here are some products that might work for you!');
         googleSearch("dark circles")
       }
 
