@@ -2,10 +2,23 @@ section {
   margin: 2rem;
   padding: 2rem;
 }
+header{
+  opacity: 0.8;
+}
+div.card-section{
+  background-color:#93bedf ;
 
+  
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #000000;
+}
 h1,
 h2 {
-  font-size: x-large;
+ font-size: x-large;
 }
 
 h3 {
@@ -104,15 +117,22 @@ h3 {
   color: #0c3e5f;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  background-image:url(/assets/img/back2.jpg)
+#body-1 {
+
+  background-image: url("../img/background.jpg");
   
 }
 
-#intro-card{
+#body-2 {
+  
+  background-image: url("../img/back2.jpg");
+  
+}
+#intro-card, #clooney-card {
 width: 50%;
 margin-top: 2rem;
 margin-left: 2rem;
 }
+
+
 
