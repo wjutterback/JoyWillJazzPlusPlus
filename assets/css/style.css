@@ -2,9 +2,6 @@ section {
   margin: 2rem;
   padding: 2rem;
 }
-body {
-  font-family: "Montserrat", sans-serif;
-}
 
 h1,
 h2 {
@@ -107,4 +104,8 @@ h3 {
   color: #0c3e5f;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+  background-image: url(/assets/img/background.jpg);
+}
 
