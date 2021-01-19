@@ -1,174 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1 - Name TBD</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-      integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="top-bar">
-        <div class="top-bar-left">
-          <span class="Joy">Joy</span> <span class="Will">Will </span>
-          <span class="Jazz">Jazz</span> <span class="plus">➕➕</span>
-        </div>
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="has-submenu">
-            <a href="#0">Choose a Scan Face App</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="./index.html">Scan Your Face-alizer</a></li>
-              <li><a href="./Clooney.html">How Clooney Are You</a></li>
-              <li><a href="#0">PH for other API function #2</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="top-bar-right">
-          The World's Most Interesting Face Analyzing App
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JoyWillJazz++</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+    integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body id="body-1">
+  <header>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <span class="Joy">Joy</span> <span class="Will">Will </span>
+        <span class="Jazz">Jazz</span> <span class="plus">➕➕</span>
       </div>
-    </header>
-    <!-- This demo uses flex grid but you can use float grid too -->
-
-    <div class="row">
-      <div class="columns">
-        <h1>Scan Your Face-alizer</h1>
-        <p>
-          Scan Your Face-alizer is face analyzing app that will scan your picture and give you skin care products
-           for your problem areas. 
-
-           Be sure to try our other JoyWillJazz++ face scan apps for other fun experiences using face scanning technology.  
-        </p>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="has-submenu">
+          <a href="#0">Choose a Scan Face App</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="./index.html">Scan Your Face-alizer</a></li>
+            <li><a href="./Clooney.html">How Clooney Are You</a></li>
+            <li><a href="#0">PH for other API function #2</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="top-bar-right">
+        The World's Most Interesting Face Analyzing App
       </div>
     </div>
+  </header>
+  <!-- This demo uses flex grid but you can use float grid too -->
 
-    <div class="row">
-      <div class="columns">
-        <ul class="accordion" data-accordion>
-          <li class="accordion-item is-active" data-accordion-item>
-            <a href="#" class="accordion-title"
-              >Directions for using Scan Your Face-alizer</a
-            >
-            <div class="accordion-content" data-tab-content>
-              <p>
-                It is so easy! Just upload a file or paste a link and our app will make recommendations based on your photo.  
-              </p>
-            </div>
-          </li>
-          <li class="accordion-item" data-accordion-item>
-            <a href="#" class="accordion-title"
-              >Upload a file from your device</a
-            >
-            <div class="accordion-content" data-tab-content>
-              <form>
-                <div class="grid-container">
-                  <div class="grid-x grid-padding-x">
-                    <div class="medium-6 cell">
-                      <label>Upload A File Below!</label>
-                      <input
-                        type="file"
-                        id="fileIMG"
-                        accept="image/png, image/jpeg"
-                        placeholder="Upload your img here!"
-                      />
-                      <a
-                        class="button radius bordered shadow primary"
-                        id="fileSubmit"
-                        >Submit</a
-                      >
-                    </div>
+  <div class="card" id="intro-card">
+    <div class="card-section">
+      <h1>Scan Your Face-alizer</h1>
+      <p>
+        Scan Your Face-alizer is face analyzing app that will scan your picture and give you skin care products
+        for your problem areas.
+
+        Be sure to try our other JoyWillJazz++ face scan apps for other fun experiences using face scanning technology.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <ul class="accordion" data-accordion>
+        <li class="accordion-item is-active" data-accordion-item>
+          <a href="#" class="accordion-title">Directions for using Scan Your Face-alizer</a>
+          <div class="accordion-content" data-tab-content>
+            <p>
+              It is so easy! Just upload a file or paste a link and our app will make recommendations based on your
+              photo.
+            </p>
+          </div>
+        </li>
+        <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Upload a file from your device</a>
+          <div class="accordion-content" data-tab-content>
+            <form>
+              <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                  <div class="medium-6 cell">
+                    <label>Upload A File Below!</label>
+                    <input type="file" id="fileIMG" accept="image/png, image/jpeg"
+                      placeholder="Upload your img here!" />
+                    <a class="button radius bordered shadow primary" id="fileSubmit">Submit</a>
                   </div>
                 </div>
-              </form>
-            </div>
-          </li>
+              </div>
+            </form>
+          </div>
+        </li>
 
-          <li class="accordion-item" data-accordion-item>
-            <a href="#" class="accordion-title"
-              >Paste a link from the internet</a
-            >
+        <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Paste a link from the internet</a>
 
-            <div class="accordion-content" data-tab-content>
-              <form>
-                <div class="medium-6 cell">
-                  <label
-                    >Paste Your Link Below
-                    <input
-                      type="text"
-                      id="imgURL"
-                      placeholder="Input your img link here!"
-                    />
-                    <a href="#" class="button primary" id="submitButton"
-                      >Submit</a
-                    >
-                  </label>
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
+          <div class="accordion-content" data-tab-content>
+            <form>
+              <div class="medium-6 cell">
+                <label>Paste Your Link Below
+                  <input type="text" id="imgURL" placeholder="Input your img link here!" />
+                  <a href="#" class="button primary" id="submitButton">Submit</a>
+                </label>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12 end error"></div>
+      <div class="cell medium-12 end error2"></div>
+      <div class="grid-container imgdisplay">
+        <img src="" />
+      </div>
+      <div id="message"></div>
+    </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12 resultdisplay skinresult">
+        <h1></h1>
+        <div class="erase" id="skindisplay"></div>
+      </div>
+      <div class="cell medium-12 resultdisplay acneresult">
+        <h1></h1>
+        <div class="erase" id="acnedisplay"></div>
+      </div>
+      <div class="cell medium-12 resultdisplay eyeresult">
+        <h1></h1>
+        <div class="erase" id="eyedisplay"></div>
       </div>
     </div>
-
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12 end error"></div>
-        <div class="cell medium-12 end error2"></div>
-        <div class="grid-container imgdisplay">
-          <img src="" />
-        </div>
-        <div id="message"></div>
-      </div>
+    <div class="grid-x grid-padding-x align-center">
+      <canvas id="canvasImg" width="" height=""></canvas>
     </div>
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12 resultdisplay skinresult">
-          <h1></h1>
-          <div class="erase" id="skindisplay"></div>
-        </div>
-        <div class="cell medium-12 resultdisplay acneresult">
-          <h1></h1>
-          <div class="erase" id="acnedisplay"></div>
-        </div>
-        <div class="cell medium-12 resultdisplay eyeresult">
-          <h1></h1>
-          <div class="erase" id="eyedisplay"></div>
-        </div>
-      </div>
-      <div class="grid-x grid-padding-x align-center">
-        <canvas id="canvasImg" width="" height=""></canvas>
-      </div>
-    </div>
+  </div>
 
-    <!-- Footer -->
+  <!-- Footer -->
 
-    <div class="mobile-bottom-bar">
-      <a href="https://unsplash.com/@mshfoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" class="footer-link">
-     <i class="fa fa-sign-out"></i> 
-     <span class='footer-text'>Background Photo by Karolina Kolacz </span>
+  <footer class="mobile-bottom-bar">
+    <a href="https://unsplash.com/@mshfoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+      class="footer-link">
+      <i class="fa fa-sign-out"></i>
+      <span class='footer-text'>Background Photo by Karolina Kolacz </span>
     </a>
-      
-    </div>
-  
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-      integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
+  </footer>
+
+  <!-- Linked JS  -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+    integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
