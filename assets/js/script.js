@@ -21,13 +21,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       console.log(response);
       var googleArray = response.items;
 
-      if (searchVar === "Acne medication") {
-        $('.acneresult h1').text("Acne products:")
-      } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
-        $('.skinresult h1').text("Skincare products:")
-      } else if (searchVar === "dark circles") {
-        $('.eyeresult h1').text("Eyecare products:")
-      }
       for (i = 0; i < googleArray.length; i++) {
         if (response.items[i].link.includes('/p/') === true) {
           if (searchVar === "Acne medication") {
@@ -90,27 +83,27 @@ function doubleSearch(htmlsrc, htmlinput) {
       }
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
-        $('<div>').text('You have acne. Here are some products that might work for you!').appendTo($('#message'));
+        $('.acneresult h1').text('You have acne. Here are some products that might work for you!');
         googleSearch("Acne medication");
       }
 
       if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        $('<div>').text('You have oily skin. Here are some products that might work for you!').appendTo($('#message'));
+        $('.skinresult h1').text('You have oily skin. Here are some products that might work for you!');
         googleSearch("oily skin products");
       }
 
       if (drySkin === 1 && drySkinConfidence >= .70) {
-        $('<div>').text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
+        $('.skinresult h1').text('You have dry skin. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dry skin products")
       }
 
       if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        $('<div>').text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
+        $('.skinresult h1').text('You have combined or mixed skin . Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("combination skin products")
       }
 
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        $('<div>').text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
+        $('.eyeresult h1').text('You have dark circles. Here are some products that might work for you!').appendTo($('#message'));
         googleSearch("dark circles")
       }
 
