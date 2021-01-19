@@ -36,6 +36,10 @@ Jasmine - https://github.com/jasdjames
 Will - https://github.com/Refuge001
 Joy - https://github.com/JoyUmoekpo
 
+[Background] (https://unsplash.com/photos/TMQWIN5ITlg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+
+We utilized Foundation and attached documentation for most of our HTML and CSS layout 
+(https://get.foundation/building-blocks/blocks/mobile-bottom-bar.html)
 
 ## License
 MIT License
