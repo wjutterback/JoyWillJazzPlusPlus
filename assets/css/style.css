@@ -2,23 +2,21 @@ section {
   margin: 2rem;
   padding: 2rem;
 }
-header{
+header {
   opacity: 0.8;
 }
-div.card-section{
-  background-color:#93bedf ;
-
-  
+div.card-section {
+  background-color: #93bedf;
 }
 
-body{
+body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #000000;
 }
 h1,
 h2 {
- font-size: x-large;
+  font-size: x-large;
 }
 
 h3 {
@@ -63,6 +61,10 @@ h3 {
   float: right;
 }
 
+.resultdisplay h1 {
+  color: rgb(255, 145, 0);
+}
+
 #message {
   font-size: 30px;
 }
@@ -79,17 +81,17 @@ h3 {
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .mobile-bottom-bar .footer-link {
   -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   text-align: center;
   color: #0c3e5f;
   text-transform: uppercase;
@@ -105,7 +107,8 @@ h3 {
   vertical-align: middle;
 }
 
-.mobile-bottom-bar .footer-link:focus, .mobile-bottom-bar .footer-link:active {
+.mobile-bottom-bar .footer-link:focus,
+.mobile-bottom-bar .footer-link:active {
   color: #0c3e5f;
 }
 
@@ -118,21 +121,15 @@ h3 {
 }
 
 #body-1 {
-
   background-image: url("../img/background.jpg");
-  
 }
 
 #body-2 {
-  
   background-image: url("../img/back2.jpg");
-  
 }
-#intro-card, #clooney-card {
-width: 50%;
-margin-top: 2rem;
-margin-left: 2rem;
+#intro-card,
+#clooney-card {
+  width: 50%;
+  margin-top: 2rem;
+  margin-left: 2rem;
 }
-
-
-
