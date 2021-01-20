@@ -40,6 +40,36 @@ function doubleSearch(htmlsrc, htmlinput) {
             error: error,
         }).then(function (response) {
             console.log(response);
+            console.log(response.confidence);
+
+            var similarFace = response.confidence;
+
+            if (similarFace === 0 ) {
+            $('<div>').text('You do not look like George Clooney at all!').appendTo($('#clooneyMessage'));
+            }
+
+            if (similarFace >= 1 && similarFace <= 25) {
+                $('<div>').text('You do not really look like George Clooney!').appendTo($('#clooneyMessage'));
+                }
+    
+
+            if (similarFace >= 25 && similarFace <= 45) {
+            $('<div>').text('You look a bit like George Clooney!').appendTo($('#clooneyMessage'));
+            }
+
+
+            if (similarFace >= 45 && similarFace <= 65) {
+            $('<div>').text('You look sort of like George Clooney!').appendTo($('#clooneyMessage'));
+            }
+
+
+            if (similarFace >= 65 && similarFace <= 85) {
+            $('<div>').text('You have many similiar features to George Clooney!').appendTo($('#clooneyMessage'));
+            }
+
+            if (similarFace >= 85) {
+            $('<div>').text('You look a lot like George Clooney!').appendTo($('#clooneyMessage'));
+            }        
         });
 
     }
