@@ -41,6 +41,8 @@ Joy - https://github.com/JoyUmoekpo
 We utilized Foundation and attached documentation for most of our HTML and CSS layout 
 (https://get.foundation/building-blocks/blocks/mobile-bottom-bar.html)
 
+[Opacity] (https://www.w3schools.com/cssref/func_rgba.asp)
+
 ## License
 MIT License
 
