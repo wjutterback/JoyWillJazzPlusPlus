@@ -43,7 +43,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 
             var similarFace = response.confidence;
 
-            if (similarFace === undefined) {
+            if (similarFace === undefined || similarFace === null) {
                 $('<div>').text('Your picture was unable to be scanned.').appendTo($('#clooneyMessage'));
             }
 
