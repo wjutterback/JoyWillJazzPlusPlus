@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
-  <body id="body-1">
+  <body id="body-2">
     <header>
       <div class="top-bar">
         <div class="top-bar-left">
@@ -40,16 +40,13 @@
         </div>
       </div>
     </header>
-    <!-- This demo uses flex grid but you can use float grid too -->
 
-    <div class="card" id="intro-card">
+    <div class="card" id="clooney-card">
       <div class="card-section">
-        <h1>Scan Your Face-alizer</h1>
+        <h1>Look Who Is Merging Now!</h1>
         <p>
-          Scan Your Face-alizer is face analyzing app that will scan your
-          picture and give you skin care products for your problem areas. Be
-          sure to try our other JoyWillJazz++ face scan apps for other fun
-          experiences using face scanning technology.
+          A face analyzing app that will scan your picture and merge it with a
+          baby's face.
         </p>
       </div>
     </div>
@@ -59,12 +56,12 @@
         <ul class="accordion" data-accordion>
           <li class="accordion-item is-active" data-accordion-item>
             <a href="#" class="accordion-title"
-              >Directions for using Scan Your Face-alizer</a
+              >Directions for using JoyWillJazz++</a
             >
             <div class="accordion-content" data-tab-content>
               <p>
-                It is so easy! Just upload a file or paste a link and our app
-                will make recommendations based on your photo.
+                It is so easy! Choose one of the options below as a way to
+                upload your photo. We will handle the reset.
               </p>
             </div>
           </li>
@@ -77,12 +74,19 @@
                 <div class="grid-container">
                   <div class="grid-x grid-padding-x">
                     <div class="medium-6 cell">
-                      <label>Upload A File Below!</label>
+                      <label for="fileIMG"
+                        >Your base template image here!</label
+                      >
                       <input
                         type="file"
                         id="fileIMG"
                         accept="image/png, image/jpeg"
-                        placeholder="Upload your img here!"
+                      />
+                      <label for="fileIMG2">Your merged face image here!</label>
+                      <input
+                        type="file"
+                        id="fileIMG2"
+                        accept="image/png, image/jpeg"
                       />
                       <a
                         class="button radius bordered shadow primary"
@@ -109,7 +113,12 @@
                     <input
                       type="text"
                       id="imgURL"
-                      placeholder="Input your img link here!"
+                      placeholder="Input your base img link here!"
+                    />
+                    <input
+                      type="text"
+                      id="imgURL2"
+                      placeholder="Input your merged img link here!"
                     />
                     <a href="#" class="button primary" id="submitButton"
                       >Submit</a
@@ -123,56 +132,38 @@
       </div>
     </div>
 
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12 end error"></div>
-        <div class="cell medium-12 end error2"></div>
-        <div class="grid-container imgdisplay">
-          <img src="" />
+    <div class="card">
+      <div class="card-section">
+        <div class="grid-container">
+          <div class="grid-x grid-margin-x">
+            <div class="cell medium-12 end error"></div>
+            <div class="cell medium-12 end error2"></div>
+            <!-- <div class="grid-container imgdisplay"> -->
+            <img id="merged" />
+            <img id="preview1" />
+            <img id="preview2" />
+            <div id="mergeMessage"></div>
+          </div>
         </div>
-        <div id="message"></div>
       </div>
     </div>
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12 resultdisplay skinresult">
-          <h1></h1>
-          <div class="erase" id="skindisplay"></div>
-        </div>
-        <div class="cell medium-12 resultdisplay acneresult">
-          <h1></h1>
-          <div class="erase" id="acnedisplay"></div>
-        </div>
-        <div class="cell medium-12 resultdisplay eyeresult">
-          <h1></h1>
-          <div class="erase" id="eyedisplay"></div>
-        </div>
-      </div>
-      <div class="grid-x grid-padding-x align-center">
-        <canvas id="canvasImg" width="" height=""></canvas>
-      </div>
-    </div>
-
-    <!-- Footer -->
-
+    <!-- Footer       -->
     <footer class="mobile-bottom-bar">
       <a
-        href="https://unsplash.com/@mshfoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+        href="https://unsplash.com/photos/7j5Uf8KnwlI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"
         class="footer-link"
       >
-        <i class="fa fa-sign-out"></i>
-        <span class="footer-text">Background Photo by Karolina Kolacz </span>
+        <span class="footer-text">Background Photo by Harry Dona </span>
       </a>
     </footer>
 
-    <!-- Linked JS  -->
-
+    <!-- Script Below this line -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
       integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/merge.js"></script>
   </body>
 </html>

@@ -159,7 +159,6 @@ function encodeIMG() {
   reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
 }
 
-//currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
   doubleSearch($('#imgURL').val(), true)
 });

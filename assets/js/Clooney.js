@@ -1,12 +1,10 @@
 $(document).foundation()
 
 const preview = document.getElementById('preview1');
-
 var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
     $('.error').text("");
-    $('.error2').text("");
     $('#message').empty();
     $('.resultdisplay h1').text('');
     $('.erase').empty();
@@ -44,32 +42,32 @@ function doubleSearch(htmlsrc, htmlinput) {
 
             var similarFace = response.confidence;
 
-            if (similarFace === 0 ) {
-            $('<div>').text('You do not look like George Clooney at all!').appendTo($('#clooneyMessage'));
+            if (similarFace === 0) {
+                $('<div>').text('You do not look like George Clooney at all!').appendTo($('#clooneyMessage'));
             }
 
             if (similarFace >= 1 && similarFace <= 25) {
                 $('<div>').text('You do not really look like George Clooney!').appendTo($('#clooneyMessage'));
-                }
-    
+            }
+
 
             if (similarFace >= 25 && similarFace <= 45) {
-            $('<div>').text('You look a bit like George Clooney!').appendTo($('#clooneyMessage'));
+                $('<div>').text('You look a bit like George Clooney!').appendTo($('#clooneyMessage'));
             }
 
 
             if (similarFace >= 45 && similarFace <= 65) {
-            $('<div>').text('You look sort of like George Clooney!').appendTo($('#clooneyMessage'));
+                $('<div>').text('You look sort of like George Clooney!').appendTo($('#clooneyMessage'));
             }
 
 
             if (similarFace >= 65 && similarFace <= 85) {
-            $('<div>').text('You have many similiar features to George Clooney!').appendTo($('#clooneyMessage'));
+                $('<div>').text('You have many similiar features to George Clooney!').appendTo($('#clooneyMessage'));
             }
 
             if (similarFace >= 85) {
-            $('<div>').text('You look a lot like George Clooney!').appendTo($('#clooneyMessage'));
-            }        
+                $('<div>').text('You look a lot like George Clooney!').appendTo($('#clooneyMessage'));
+            }
         });
 
     }
@@ -93,19 +91,16 @@ function encodeIMG() {
     reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
 }
 
-//currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
     doubleSearch($('#imgURL').val(), true)
 });
 
-
-
 $("#fileSubmit").on("click", function () {
     doubleSearch()
 });
+
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
     $('.error').text("");
-    $('.error2').text("");
     encodeIMG();
 });
