@@ -43,10 +43,10 @@
 
     <div class="card" id="clooney-card">
       <div class="card-section">
-        <h1>How George Clooney Are You?</h1>
+        <h1>Use your "im-merge-ination"!</h1>
         <p>
-          A face analyzing app that will scan your picture and show how close
-          you match up to George Clooney.
+          A face analyzing app that will scan and merge a base picture's face
+          with a face from another picture.
         </p>
       </div>
     </div>
@@ -61,7 +61,7 @@
             <div class="accordion-content" data-tab-content>
               <p>
                 It is so easy! Choose one of the options below as a way to
-                upload your photo. We will handle the reset.
+                upload your photos. We will handle the reset.
               </p>
             </div>
           </li>
@@ -74,12 +74,19 @@
                 <div class="grid-container">
                   <div class="grid-x grid-padding-x">
                     <div class="medium-6 cell">
-                      <label>Upload A File Below!</label>
+                      <label for="fileIMG">Your base image here!</label>
                       <input
                         type="file"
                         id="fileIMG"
                         accept="image/png, image/jpeg"
-                        placeholder="Upload your img here!"
+                      />
+                      <label for="fileIMG2"
+                        >Merge a face into base image here!</label
+                      >
+                      <input
+                        type="file"
+                        id="fileIMG2"
+                        accept="image/png, image/jpeg"
                       />
                       <a
                         class="button radius bordered shadow primary"
@@ -101,17 +108,21 @@
             <div class="accordion-content" data-tab-content>
               <form>
                 <div class="medium-6 cell">
-                  <label
-                    >Paste Your Link Below
-                    <input
-                      type="text"
-                      id="imgURL"
-                      placeholder="Input your img link here!"
-                    />
-                    <a href="#" class="button primary" id="submitButton"
-                      >Submit</a
-                    >
-                  </label>
+                  <label>Your base image link below! </label>
+                  <input
+                    type="text"
+                    id="imgURL"
+                    placeholder="Input your base img link here!"
+                  />
+                  <label>Your merging image link below! </label>
+                  <input
+                    type="text"
+                    id="imgURL2"
+                    placeholder="Input your merged img link here!"
+                  />
+                  <a href="#" class="button primary" id="submitButton"
+                    >Submit</a
+                  >
                 </div>
               </form>
             </div>
@@ -123,21 +134,16 @@
     <div class="card">
       <div class="card-section">
         <div class="grid-container">
-          <div id="clooneyMessage"></div>
           <div class="cell medium-12 error"></div>
+          <div class="cell medium-12 error2"></div>
           <div class="grid-x grid-margin-x align-center">
-            <div id="imgOne"><img id="preview1" /></div>
-            <div id="imgTwo">
-              <img
-                id="preview2"
-                src="https://i.pinimg.com/originals/d1/88/98/d18898c13240578f2d6aaf8c909234bb.jpg"
-              />
-            </div>
+            <img id="merged" />
+            <img id="preview1" />
+            <img id="preview2" />
           </div>
         </div>
       </div>
     </div>
-
     <!-- Footer       -->
     <footer class="mobile-bottom-bar">
       <span class="footer-text center">JoyWillJazz++</span>
@@ -156,6 +162,6 @@
       integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/js/Clooney.js"></script>
+    <script src="./assets/js/merge.js"></script>
   </body>
 </html>

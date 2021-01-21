@@ -2,12 +2,14 @@ section {
   margin: 2rem;
   padding: 2rem;
 }
+
 header {
   opacity: 0.8;
 }
+
 .card {
-  background-color: rgba(147,190,223,0.6);
-}  
+  background-color: rgba(147, 190, 223, 0.8);
+}
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -35,15 +37,17 @@ h3 {
 }
 
 .accordion {
-width: fit-content;
-margin-left: 2rem ;
+  margin-left: 2rem;
+  margin-right: 45%;
 }
 .error {
+  text-align: center;
   font-size: 40px;
   color: red;
 }
 
 .error2 {
+  text-align: center;
   font-size: 40px;
   color: crimson;
 }
@@ -56,6 +60,7 @@ margin-left: 2rem ;
 
 .imgdisplay img {
   height: 100%;
+  border-radius: 20px;
 }
 
 .resultdisplay a img {
@@ -66,12 +71,21 @@ margin-left: 2rem ;
 }
 
 .resultdisplay h1 {
-  color: rgb(255, 145, 0);
+  margin-top: 5px;
+  color: ghostwhite;
+  background-color: grey;
+  text-align: center;
 }
 
 #message {
   font-size: 30px;
   color: ghostwhite;
+  margin-bottom: 5px;
+}
+
+canvas {
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
 .plus {
@@ -80,7 +94,7 @@ margin-left: 2rem ;
 
 .mobile-bottom-bar {
   width: 100%;
-  height: 4.1rem;
+  height: 3rem;
   background: #1779ba;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,8 +142,7 @@ margin-left: 2rem ;
   color: #0c3e5f;
 }
 
-.footer-text.center{
-  
+.footer-text.center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,6 +159,7 @@ margin-left: 2rem ;
 #body-2 {
   background-image: url("../img/back2.jpg");
 }
+
 #intro-card,
 #clooney-card {
   width: 50%;
@@ -154,12 +168,25 @@ margin-left: 2rem ;
 }
 #preview1 {
   float: right;
-  height: 150px;
+  height: 200px;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 5px;
 }
 #preview2 {
   float: left;
-  height: 150px;
+  height: 200px;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+#merged {
+  border-radius: 20px;
 }
 #clooneyMessage div {
   border: dotted;
+  margin-bottom: 3px;
+  text-align: center;
 }

@@ -1,7 +1,6 @@
 $(document).foundation()
 
 const preview = document.getElementById('preview1');
-
 var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
@@ -38,8 +37,6 @@ function doubleSearch(htmlsrc, htmlinput) {
             data: data,
             error: error,
         }).then(function (response) {
-            console.log(response);
-            console.log(response.confidence);
 
             var similarFace = Math.round(response.confidence);
 
@@ -47,32 +44,32 @@ function doubleSearch(htmlsrc, htmlinput) {
                 $('<div>').text('Your picture was unable to be scanned.').appendTo($('#clooneyMessage'));
             }
 
-            if (similarFace === 0 ) {
-            $('<div>').text(`You do not look like George Clooney at all! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
+            if (similarFace === 0) {
+                $('<div>').text(`You do not look like George Clooney at all! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
             if (similarFace > 1 && similarFace < 25) {
                 $('<div>').text(`You do not really look like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
-                }
-    
+            }
+
 
             if (similarFace > 25 && similarFace < 45) {
-            $('<div>').text(`You look a bit like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
+                $('<div>').text(`You look a bit like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
             if (similarFace > 45 && similarFace < 65) {
-            $('<div>').text(`You look sort of like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
+                $('<div>').text(`You look sort of like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
             if (similarFace > 65 && similarFace < 85) {
-            $('<div>').text(`You have many similiar features to George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
+                $('<div>').text(`You have many similiar features to George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
             if (similarFace > 85) {
-            $('<div>').text(`You look a lot like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
-            }        
+                $('<div>').text(`You look a lot like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
+            }
         });
 
     }
@@ -85,7 +82,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 function encodeIMG() {
     var imgFile = $('input').prop('files')[0];
     if (imgFile.size >= 2000000) {
-        $('.error').text("Your image is larger than 2mb!")
+        $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
     }
     var reader = new FileReader();
     reader.onloadend = function () {
@@ -96,19 +93,24 @@ function encodeIMG() {
     reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
 }
 
-//currently uses two buttons - would like to just use one but will require more work
 $("#submitButton").on("click", function () {
-    doubleSearch($('#imgURL').val(), true)
+    if ($('#imgURL').val() === "") {
+        $('.error').text("Please include a link to a picture!")
+    } else {
+        doubleSearch($('#imgURL').val(), true)
+    }
 });
-
-
 
 $("#fileSubmit").on("click", function () {
-    doubleSearch()
+    if ($('#fileIMG').prop('files')[0] === undefined) {
+        $('.error').text("Please upload a picture!");
+    } else {
+        doubleSearch()
+    }
 });
+
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
     $('.error').text("");
-    $('.error2').text("");
     encodeIMG();
 });
