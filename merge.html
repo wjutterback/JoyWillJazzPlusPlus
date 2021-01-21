@@ -30,8 +30,8 @@
             <a href="#0">Choose a Scan Face App</a>
             <ul class="submenu menu vertical" data-submenu>
               <li><a href="./index.html">Scan Your Face-alizer</a></li>
-              <li><a href="./Clooney.html">How Clooney Are You</a></li>
-              <li><a href="./merge.html">Look Who Is Merging Now!</a></li>
+              <li><a href="./Clooney.html">How Clooney Are You?</a></li>
+              <li><a href="./merge.html">Im-merge-ination</a></li>
             </ul>
           </li>
         </ul>
@@ -43,10 +43,10 @@
 
     <div class="card" id="clooney-card">
       <div class="card-section">
-        <h1>Look Who Is Merging Now!</h1>
+        <h1>Use your "im-merge-ination"!</h1>
         <p>
-          A face analyzing app that will scan your picture and merge it with a
-          baby's face.
+          A face analyzing app that will scan and merge a base picture's face
+          with a face from another picture.
         </p>
       </div>
     </div>
@@ -61,7 +61,7 @@
             <div class="accordion-content" data-tab-content>
               <p>
                 It is so easy! Choose one of the options below as a way to
-                upload your photo. We will handle the reset.
+                upload your photos. We will handle the reset.
               </p>
             </div>
           </li>
@@ -74,15 +74,15 @@
                 <div class="grid-container">
                   <div class="grid-x grid-padding-x">
                     <div class="medium-6 cell">
-                      <label for="fileIMG"
-                        >Your base template image here!</label
-                      >
+                      <label for="fileIMG">Your base image here!</label>
                       <input
                         type="file"
                         id="fileIMG"
                         accept="image/png, image/jpeg"
                       />
-                      <label for="fileIMG2">Your merged face image here!</label>
+                      <label for="fileIMG2"
+                        >Merge a face into base image here!</label
+                      >
                       <input
                         type="file"
                         id="fileIMG2"
@@ -108,22 +108,21 @@
             <div class="accordion-content" data-tab-content>
               <form>
                 <div class="medium-6 cell">
-                  <label
-                    >Paste Your Link Below
-                    <input
-                      type="text"
-                      id="imgURL"
-                      placeholder="Input your base img link here!"
-                    />
-                    <input
-                      type="text"
-                      id="imgURL2"
-                      placeholder="Input your merged img link here!"
-                    />
-                    <a href="#" class="button primary" id="submitButton"
-                      >Submit</a
-                    >
-                  </label>
+                  <label>Your base image link below! </label>
+                  <input
+                    type="text"
+                    id="imgURL"
+                    placeholder="Input your base img link here!"
+                  />
+                  <label>Your merging image link below! </label>
+                  <input
+                    type="text"
+                    id="imgURL2"
+                    placeholder="Input your merged img link here!"
+                  />
+                  <a href="#" class="button primary" id="submitButton"
+                    >Submit</a
+                  >
                 </div>
               </form>
             </div>
@@ -135,14 +134,12 @@
     <div class="card">
       <div class="card-section">
         <div class="grid-container">
-          <div class="grid-x grid-margin-x">
-            <div class="cell medium-12 end error"></div>
-            <div class="cell medium-12 end error2"></div>
-            <!-- <div class="grid-container imgdisplay"> -->
+          <div class="cell medium-12 error"></div>
+          <div class="cell medium-12 error2"></div>
+          <div class="grid-x grid-margin-x align-center">
             <img id="merged" />
             <img id="preview1" />
             <img id="preview2" />
-            <div id="mergeMessage"></div>
           </div>
         </div>
       </div>

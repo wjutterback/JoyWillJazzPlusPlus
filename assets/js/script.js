@@ -83,27 +83,27 @@ function doubleSearch(htmlsrc, htmlinput) {
       }
 
       if (faceAcne === 1 && faceAcneConfidence >= .70) {
-        $('.acneresult h1').text('You have acne. Here are some products that might work for you!');
+        $('.acneresult h1').text('We\'ve detected acne. Here are some products that might work for you!');
         googleSearch("Acne medication");
       }
 
       if (oilySkin === 1 && oilySkinConfidence >= .70) {
-        $('.skinresult h1').text('You have oily skin. Here are some products that might work for you!');
+        $('.skinresult h1').text('We\'ve detected oily skin. Here are some products that might work for you!');
         googleSearch("oily skin products");
       }
 
       if (drySkin === 1 && drySkinConfidence >= .70) {
-        $('.skinresult h1').text('You have dry skin. Here are some products that might work for you!');
+        $('.skinresult h1').text('We\'ve detected dry skin. Here are some products that might work for you!');
         googleSearch("dry skin products")
       }
 
       if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
-        $('.skinresult h1').text('You have combined or mixed skin . Here are some products that might work for you!');
+        $('.skinresult h1').text('We\'ve detected combined or mixed skin . Here are some products that might work for you!');
         googleSearch("combination skin products")
       }
 
       if (darkCircle === 1 && darkCircleConfidence >= .70) {
-        $('.eyeresult h1').text('You have dark circles. Here are some products that might work for you!');
+        $('.eyeresult h1').text('We\'ve detected dark circles. Here are some products that might work for you!');
         googleSearch("dark circles")
       }
 
@@ -118,6 +118,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       data: data,
     }).then(function (response) {
       console.log(response);
+      //draws canvas image
       var image = new Image();
       image.src = imgResult;
       var canvas = document.getElementById("canvasImg");
@@ -135,6 +136,7 @@ function doubleSearch(htmlsrc, htmlinput) {
           coords.push(landmark[part][coord]);
         })
       });
+      //plots 1,000 coordinates onto canvas image
       coords.forEach(function (value) {
         ctx.fillRect(value.x, value.y, 2, 2)
       })
@@ -148,7 +150,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 function encodeIMG() {
   var imgFile = $('input').prop('files')[0];
   if (imgFile.size >= 2000000) {
-    $('.error').text("Your image is larger than 2mb!")
+    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
   }
   var reader = new FileReader();
   reader.onloadend = function () {

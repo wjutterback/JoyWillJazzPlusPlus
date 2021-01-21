@@ -84,7 +84,7 @@ function doubleSearch(htmlsrc, htmlinput) {
 function encodeIMG() {
     var imgFile = $('input').prop('files')[0];
     if (imgFile.size >= 2000000) {
-        $('.error').text("Your image is larger than 2mb!")
+        $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
     }
     var reader = new FileReader();
     reader.onloadend = function () {

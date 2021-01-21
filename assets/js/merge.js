@@ -1,6 +1,7 @@
 $(document).foundation()
 
 const preview = document.getElementById('preview1');
+const preview2 = document.getElementById('preview2');
 const merged = document.getElementById('merged');
 var imgResult = "";
 var imgResult2 = "";
@@ -39,7 +40,7 @@ function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
       data: data,
       error: error,
     }).then(function (response) {
-      console.log(response);
+      //source merged image from base64 result
       merged.src = "data:image/jpeg;base64," + response.result;
     });
 
@@ -53,7 +54,7 @@ function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
 function encodeIMG() {
   var imgFile = $('#fileIMG').prop('files')[0];
   if (imgFile.size >= 2000000) {
-    $('.error').text("Your image is larger than 2mb!")
+    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
   }
   var reader = new FileReader();
   reader.onloadend = function () {
@@ -67,13 +68,12 @@ function encodeIMG() {
 function encodeTemplate() {
   var imgFile2 = $('#fileIMG2').prop('files')[0];
   if (imgFile2.size >= 2000000) {
-    $('.error2').text("Your second image is larger than 2mb!")
+    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
   }
   var reader = new FileReader();
   reader.onloadend = function () {
     preview2.src = reader.result;
     imgResult2 = reader.result;
-    console.log(imgResult2);
     return imgResult2;
   }
   reader.readAsDataURL(imgFile2)
@@ -97,28 +97,3 @@ $('#fileIMG2').on("change", function () {
   $('.error').text("");
   encodeTemplate();
 });
-
-// let image = new Image();
-// image.src = "ellie.jpg"
-// let canvas = document.querySelector('canvas');
-// canvas.width = image.naturalWidth;
-// canvas.height = image.naturalHeight;
-// console.log(canvas)
-// var templateFile = "";
-
-// let context = canvas.getContext('2d');
-
-// context.drawImage(image, 0, 0);
-// canvas.toBlob(function (blob) {
-//   URL.createObjectURL(blob);
-//   console.log(URL.createObjectURL(blob));
-// }, 'image/png');
-
-// var reader = new FileReader();
-// reader.onloadend = function () {
-//   templateResult = reader.result; // base64 conversion result 
-//   console.log(reader.result);
-//   URL.revokeObjectURL(templateFile);
-//   return templateFile;
-// }
-// reader.readAsDataURL(templateFile)
