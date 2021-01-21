@@ -101,7 +101,7 @@ margin-left: 2rem ;
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  text-align: center;
+  text-align: right;
   color: #0c3e5f;
   text-transform: uppercase;
   font-size: 0.8125rem;
@@ -127,6 +127,16 @@ margin-left: 2rem ;
   font-weight: bold;
   font-size: 0.875rem;
   color: #0c3e5f;
+}
+
+.footer-text.center{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+  text-transform: uppercase;
 }
 
 #body-1 {
