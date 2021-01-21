@@ -7,7 +7,6 @@ header {
 }
 .card {
   background-color: rgba(147,190,223,0.6);
-  
 }  
 
 body {
@@ -152,4 +151,15 @@ margin-left: 2rem ;
   width: 50%;
   margin-top: 2rem;
   margin-left: 2rem;
+}
+#preview1 {
+  float: right;
+  height: 150px;
+}
+#preview2 {
+  float: left;
+  height: 150px;
+}
+#clooneyMessage div {
+  border: dotted;
 }
