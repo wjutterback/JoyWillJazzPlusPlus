@@ -6,8 +6,7 @@ var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
     $('.error').text("");
-    $('.error2').text("");
-    $('#message').empty();
+    $('#clooneyMessage').text("");
     $('.resultdisplay h1').text('');
     $('.erase').empty();
     var fileList = $('input').prop('files'); // the array, not used just as a reminder
@@ -43,6 +42,10 @@ function doubleSearch(htmlsrc, htmlinput) {
             console.log(response.confidence);
 
             var similarFace = response.confidence;
+
+            if (similarFace === undefined || similarFace === null) {
+                $('<div>').text('Your picture was unable to be scanned.').appendTo($('#clooneyMessage'));
+            }
 
             if (similarFace === 0 ) {
             $('<div>').text('You do not look like George Clooney at all!').appendTo($('#clooneyMessage'));

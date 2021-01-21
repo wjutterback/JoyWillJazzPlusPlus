@@ -140,3 +140,11 @@ margin-left: 2rem ;
   margin-top: 2rem;
   margin-left: 2rem;
 }
+#preview1 {
+  float: right;
+  height: 150px;
+}
+#preview2 {
+  float: left;
+  height: 150px;
+}
