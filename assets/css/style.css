@@ -80,6 +80,12 @@ h3 {
 #message {
   font-size: 30px;
   color: ghostwhite;
+  margin-bottom: 5px;
+}
+
+canvas {
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
 .plus {
@@ -175,6 +181,9 @@ h3 {
   margin-top: 5px;
   margin-bottom: 10px;
   margin-left: 5px;
+}
+#merged {
+  border-radius: 20px;
 }
 #clooneyMessage div {
   border: dotted;
