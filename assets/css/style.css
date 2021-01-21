@@ -94,13 +94,15 @@ h3 {
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 0;
+  bottom: 0;
+  position: fixed;
 }
 
 .mobile-bottom-bar .footer-link {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  text-align: center;
+  text-align: right;
   color: #0c3e5f;
   text-transform: uppercase;
   font-size: 0.8125rem;
@@ -128,6 +130,16 @@ h3 {
   color: #0c3e5f;
 }
 
+.footer-text.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
 #body-1 {
   background-image: url("../img/background.jpg");
 }
@@ -141,4 +153,15 @@ h3 {
   width: 50%;
   margin-top: 2rem;
   margin-left: 2rem;
+}
+#preview1 {
+  float: right;
+  height: 150px;
+}
+#preview2 {
+  float: left;
+  height: 150px;
+}
+#clooneyMessage div {
+  border: dotted;
 }
