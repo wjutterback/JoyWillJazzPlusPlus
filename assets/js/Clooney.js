@@ -37,8 +37,6 @@ function doubleSearch(htmlsrc, htmlinput) {
             data: data,
             error: error,
         }).then(function (response) {
-            console.log(response);
-            console.log(response.confidence);
 
             var similarFace = Math.round(response.confidence);
 
@@ -96,11 +94,19 @@ function encodeIMG() {
 }
 
 $("#submitButton").on("click", function () {
-    doubleSearch($('#imgURL').val(), true)
+    if ($('#imgURL').val() === "") {
+        $('.error').text("Please include a link to a picture!")
+    } else {
+        doubleSearch($('#imgURL').val(), true)
+    }
 });
 
 $("#fileSubmit").on("click", function () {
-    doubleSearch()
+    if ($('#fileIMG').prop('files')[0] === undefined) {
+        $('.error').text("Please upload a picture!");
+    } else {
+        doubleSearch()
+    }
 });
 
 // when we upload a file, we encode it

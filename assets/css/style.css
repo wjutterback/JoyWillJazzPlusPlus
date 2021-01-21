@@ -60,6 +60,7 @@ h3 {
 
 .imgdisplay img {
   height: 100%;
+  border-radius: 20px;
 }
 
 .resultdisplay a img {
@@ -162,12 +163,18 @@ h3 {
 #preview1 {
   float: right;
   height: 200px;
+  border-radius: 20px;
+  margin-top: 5px;
   margin-bottom: 10px;
+  margin-right: 5px;
 }
 #preview2 {
   float: left;
   height: 200px;
+  border-radius: 20px;
+  margin-top: 5px;
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 #clooneyMessage div {
   border: dotted;

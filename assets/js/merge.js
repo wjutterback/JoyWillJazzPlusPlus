@@ -80,11 +80,19 @@ function encodeTemplate() {
 }
 
 $("#submitButton").on("click", function () {
-  doubleSearch($('#imgURL').val(), $('#imgURL2').val(), true)
+  if ($('#imgURL').val() === "" || $('#imgURL2').val() === "") {
+    $('.error').text("Please include two pictures!!")
+  } else {
+    doubleSearch($('#imgURL').val(), $('#imgURL2').val(), true)
+  }
 });
 
 $("#fileSubmit").on("click", function () {
-  doubleSearch()
+  if ($('#fileIMG').prop('files')[0] === undefined || $('#fileIMG2').prop('files')[0] === undefined) {
+    $('.error').text("Please upload two pictures!");
+  } else {
+    doubleSearch()
+  }
 });
 
 // when we upload a file, we encode it

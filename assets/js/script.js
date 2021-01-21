@@ -18,7 +18,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
       var googleArray = response.items;
 
       for (i = 0; i < googleArray.length; i++) {
@@ -62,7 +61,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       data: data,
       error: error,
     }).then(function (response) {
-      console.log(response);
       var faceAcne = response.result.acne.value;
       var faceAcneConfidence = response.result.acne.confidence;
       var oilySkin = response.result.skin_type.details[0].value;
@@ -117,7 +115,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       method: "POST",
       data: data,
     }).then(function (response) {
-      console.log(response);
       //draws canvas image
       var image = new Image();
       image.src = imgResult;
@@ -162,11 +159,19 @@ function encodeIMG() {
 }
 
 $("#submitButton").on("click", function () {
-  doubleSearch($('#imgURL').val(), true)
+  if ($('#imgURL').val() === "") {
+    $('.error').text("Please include a link to a picture!")
+  } else {
+    doubleSearch($('#imgURL').val(), true)
+  }
 });
 
 $("#fileSubmit").on("click", function () {
-  doubleSearch()
+  if ($('#fileIMG').prop('files')[0] === undefined) {
+    $('.error').text("Please upload a picture!");
+  } else {
+    doubleSearch()
+  }
 });
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
