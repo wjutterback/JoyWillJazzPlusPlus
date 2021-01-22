@@ -154,10 +154,17 @@ canvas {
 
 #body-1 {
   background-image: url("../img/background.jpg");
+  background-size: 50%;
 }
 
 #body-2 {
   background-image: url("../img/back2.jpg");
+  background-size: 50%;
+}
+
+#body-3 {
+  background-image: url("../img/merge-back.jpg");
+  background-size: 50%;
 }
 
 #intro-card,
