@@ -16,6 +16,7 @@ body {
   font-weight: bold;
   color: #000000;
 }
+
 h1,
 h2 {
   font-size: x-large;
@@ -24,6 +25,7 @@ h2 {
 h3 {
   font-size: large;
 }
+
 .Jazz {
   color: darkorange;
 }
@@ -40,6 +42,7 @@ h3 {
   margin-left: 2rem;
   margin-right: 45%;
 }
+
 .error {
   text-align: center;
   font-size: 40px;
@@ -166,6 +169,7 @@ canvas {
   margin-top: 2rem;
   margin-left: 2rem;
 }
+
 #preview1 {
   float: right;
   height: 200px;
@@ -174,6 +178,7 @@ canvas {
   margin-bottom: 10px;
   margin-right: 5px;
 }
+
 #preview2 {
   float: left;
   height: 200px;
@@ -182,14 +187,16 @@ canvas {
   margin-bottom: 10px;
   margin-left: 5px;
 }
+
 #merged {
   border-radius: 20px;
 }
+
 #clooneyMessage div {
   border: dashed;
   margin-bottom: 3px;
   text-align: center;
-  font-size:x-large;
-  font-weight:bolder;
+  font-size: x-large;
+  font-weight: bolder;
   color: white;
 }
