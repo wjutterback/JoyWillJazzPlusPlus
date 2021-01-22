@@ -44,26 +44,26 @@ function doubleSearch(htmlsrc, htmlinput) {
                 $('<div>').text('Your picture was unable to be scanned.').appendTo($('#clooneyMessage'));
             }
 
-            if (similarFace > 1 && similarFace < 25) {
+            if (similarFace > 1 && similarFace < 10) {
                 $('<div>').text(`You do not really look like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
-            if (similarFace > 25 && similarFace < 50) {
+            if (similarFace > 10 && similarFace < 35) {
                 $('<div>').text(`You look a bit like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
-            if (similarFace > 50 && similarFace < 75) {
+            if (similarFace > 35 && similarFace < 50) {
                 $('<div>').text(`You look sort of like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
-            if (similarFace > 75 && similarFace < 95) {
+            if (similarFace > 50 && similarFace < 75) {
                 $('<div>').text(`You have many similiar features to George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
-            if (similarFace > 95) {
+            if (similarFace > 75) {
                 $('<div>').text(`You look a lot like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
         });
