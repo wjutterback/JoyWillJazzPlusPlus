@@ -6,8 +6,6 @@ var imgResult = "";
 function doubleSearch(htmlsrc, htmlinput) {
     $('.error').text("");
     $('#clooneyMessage').text("");
-    $('.resultdisplay h1').text('');
-    $('.erase').empty();
     var fileList = $('input').prop('files'); // the array, not used just as a reminder
 
     function scanFace() {

@@ -8,9 +8,6 @@ var imgResult2 = "";
 
 function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
   $('.error').text("");
-  $('#message').empty();
-  $('.resultdisplay h1').text('');
-  $('.erase').empty();
   var fileList = $('input').prop('files'); // the array, not used just as a reminder
 
   function scanFace() {
