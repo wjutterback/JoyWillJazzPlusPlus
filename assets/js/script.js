@@ -1,6 +1,4 @@
 $(document).foundation();
-
-const preview = document.querySelector('img');
 var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
@@ -34,11 +32,11 @@ function doubleSearch(htmlsrc, htmlinput) {
   }
 
   function scanFace() {
-    var data = "";
+    var data = '';
     var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
     if (htmlinput === true) {
       $('.image').remove();
-      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("class", "image").appendTo($(".imgdisplay"))
+      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("class", "image").appendTo($(".imgdisplay"));
       imgResult = htmlsrc;
       data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",

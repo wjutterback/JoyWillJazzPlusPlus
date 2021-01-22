@@ -1,6 +1,5 @@
 $(document).foundation();
 
-const merged = document.getElementById('merged');
 var imgResult = "";
 var imgResult2 = "";
 
