@@ -186,8 +186,9 @@ canvas {
   border-radius: 20px;
 }
 #clooneyMessage div {
-  border: dotted;
+  border: dashed;
   margin-bottom: 3px;
   text-align: center;
-  font-weight: bolder;
+  font-size:x-large;
+  color: white;
 }
