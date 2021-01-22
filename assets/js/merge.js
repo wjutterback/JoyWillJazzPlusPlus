@@ -46,33 +46,39 @@ function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
 
 // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
 function encodeIMG() {
-  var imgFile = $('#fileIMG').prop('files')[0];
-  if (imgFile.size >= 2000000) {
-    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+  if ($('#fileIMG').prop('files')[0] === undefined) {
+  } else {
+    var imgFile = $('#fileIMG').prop('files')[0];
+    if (imgFile.size >= 2000000) {
+      $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+    }
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      $('.file1').remove();
+      $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").attr("class", "file1").appendTo($(".imgdisplay")); // displays image on site
+      imgResult = reader.result; // base64 conversion result 
+      return imgResult;
+    };
+    reader.readAsDataURL(imgFile); // Takes the file and converts the data to base64
   }
-  var reader = new FileReader();
-  reader.onloadend = function () {
-    $('.file1').remove();
-    $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").attr("class", "file1").appendTo($(".imgdisplay")); // displays image on site
-    imgResult = reader.result; // base64 conversion result 
-    return imgResult;
-  };
-  reader.readAsDataURL(imgFile); // Takes the file and converts the data to base64
 }
 
 function encodeTemplate() {
-  var imgFile2 = $('#fileIMG2').prop('files')[0];
-  if (imgFile2.size >= 2000000) {
-    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+  if ($('#fileIMG2').prop('files')[0] === undefined) {
+  } else {
+    var imgFile2 = $('#fileIMG2').prop('files')[0];
+    if (imgFile2.size >= 2000000) {
+      $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+    }
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      $('.file2').remove();
+      $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview2").attr("class", "file2").appendTo($(".imgdisplay"));
+      imgResult2 = reader.result;
+      return imgResult2;
+    };
+    reader.readAsDataURL(imgFile2);
   }
-  var reader = new FileReader();
-  reader.onloadend = function () {
-    $('.file2').remove();
-    $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview2").attr("class", "file2").appendTo($(".imgdisplay"));
-    imgResult2 = reader.result;
-    return imgResult2;
-  };
-  reader.readAsDataURL(imgFile2);
 }
 
 $("#submitButton").on("click", function () {
@@ -94,10 +100,12 @@ $("#fileSubmit").on("click", function () {
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
   $('.error').text("");
+  $('.file1').remove();
   encodeIMG();
 });
 
 $('#fileIMG2').on("change", function () {
   $('.error').text("");
+  $('.file2').remove();
   encodeTemplate();
 });

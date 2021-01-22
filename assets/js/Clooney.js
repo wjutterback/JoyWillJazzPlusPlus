@@ -72,17 +72,20 @@ function doubleSearch(htmlsrc, htmlinput) {
 
 // when encodeIMG is run it will convert our imgFile variable into base64 and display it to page
 function encodeIMG() {
-    var imgFile = $('input').prop('files')[0];
-    if (imgFile.size >= 2000000) {
-        $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+    if ($('input').prop('files')[0] === undefined) {
+    } else {
+        var imgFile = $('input').prop('files')[0];
+        if (imgFile.size >= 2000000) {
+            $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
+        }
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").appendTo($("#imgOne"));
+            imgResult = reader.result; // base64 conversion result 
+            return imgResult;
+        };
+        reader.readAsDataURL(imgFile);// Takes the file and converts the data to base64
     }
-    var reader = new FileReader();
-    reader.onloadend = function () {
-        $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").appendTo($("#imgOne"));
-        imgResult = reader.result; // base64 conversion result 
-        return imgResult;
-    };
-    reader.readAsDataURL(imgFile);// Takes the file and converts the data to base64
 }
 
 $("#submitButton").on("click", function () {
