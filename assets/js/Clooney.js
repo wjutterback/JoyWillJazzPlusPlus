@@ -44,7 +44,7 @@ function doubleSearch(htmlsrc, htmlinput) {
                 $('<div>').text('Your picture was unable to be scanned.').appendTo($('#clooneyMessage'));
             }
 
-            if (similarFace > 1 && similarFace < 10) {
+            if (similarFace >= 0 && similarFace < 10) {
                 $('<div>').text(`You do not really look like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
