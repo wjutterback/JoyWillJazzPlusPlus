@@ -8,12 +8,12 @@ section {
 header {
   opacity: 0.8;
 }
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #000000;
 }
-
 
 h1,
 h2 {
@@ -28,7 +28,6 @@ canvas {
   margin-top: 20px;
   border-radius: 20px;
 }
-
 
 /* Site-Wide Specific Classes by order on the page  */
 .Jazz {
@@ -46,6 +45,7 @@ canvas {
 .plus {
   font-size: 10px;
 }
+
 .card {
   background-color: rgba(147, 190, 223, 0.8);
 }
@@ -54,6 +54,7 @@ canvas {
   margin-left: 2rem;
   margin-right: 45%;
 }
+
 .error {
   text-align: center;
   font-size: 40px;
@@ -83,7 +84,6 @@ canvas {
   margin-bottom: 3px;
   float: right;
 }
-
 
 .resultdisplay h1 {
   margin-top: 5px;
@@ -153,7 +153,6 @@ canvas {
 }
 /* Page Specific CSS  */
 
-
 #body-1 {
   background-image: url("../img/background.jpg");
   background-size: 50%;
@@ -175,6 +174,7 @@ canvas {
   margin-top: 2rem;
   margin-left: 2rem;
 }
+
 #preview1 {
   float: right;
   height: 200px;
@@ -183,6 +183,7 @@ canvas {
   margin-bottom: 10px;
   margin-right: 5px;
 }
+
 #preview2 {
   float: left;
   height: 200px;
@@ -191,15 +192,17 @@ canvas {
   margin-bottom: 10px;
   margin-left: 5px;
 }
+
 #merged {
   border-radius: 20px;
 }
+
 #clooneyMessage div {
   border: dashed;
   margin-bottom: 3px;
   text-align: center;
-  font-size:x-large;
-  font-weight:bolder;
+  font-size: x-large;
+  font-weight: bolder;
   color: white;
 }
 #message {

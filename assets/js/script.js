@@ -1,4 +1,4 @@
-$(document).foundation()
+$(document).foundation();
 
 const preview = document.querySelector('img');
 var imgResult = "";
@@ -9,7 +9,6 @@ function doubleSearch(htmlsrc, htmlinput) {
   $('#message').empty();
   $('.resultdisplay h1').text('');
   $('.erase').empty();
-  var fileList = $('input').prop('files'); // the array, not used just as a reminder
 
   function googleSearch(searchVar) {
 
@@ -23,36 +22,36 @@ function doubleSearch(htmlsrc, htmlinput) {
       for (i = 0; i < googleArray.length; i++) {
         if (response.items[i].link.includes('/p/') === true) {
           if (searchVar === "Acne medication") {
-            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
-            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           } else if (searchVar === "dark circles") {
-            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`)
+            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           }
         } else { }
       }
-    })
+    });
   }
 
   function scanFace() {
-
+    var data = "";
+    var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
     if (htmlinput === true) {
       preview.src = htmlsrc;
       imgResult = htmlsrc;
-      var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
-      var data = {
+      data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_url: htmlsrc,
         return_landmark: "all"
-      }
+      };
     } else {
-      var data = {
+      data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
         image_base64: imgResult,
         return_landmark: "all"
-      }
+      };
     }
     var queryURL = "https://api-us.faceplusplus.com/facepp/v1/skinanalyze";
     $.ajax({
@@ -80,35 +79,35 @@ function doubleSearch(htmlsrc, htmlinput) {
         $('.error2').text(`Warning: Improper Head Pose (use a picture where you look at the camera directly)`);
       }
 
-      if (faceAcne === 1 && faceAcneConfidence >= .70) {
+      if (faceAcne === 1 && faceAcneConfidence >= 0.70) {
         $('.acneresult h1').text('We\'ve detected acne. Here are some products that might work for you!');
         googleSearch("Acne medication");
       }
 
-      if (oilySkin === 1 && oilySkinConfidence >= .70) {
+      if (oilySkin === 1 && oilySkinConfidence >= 0.70) {
         $('.skinresult h1').text('We\'ve detected oily skin. Here are some products that might work for you!');
         googleSearch("oily skin products");
       }
 
-      if (drySkin === 1 && drySkinConfidence >= .70) {
+      if (drySkin === 1 && drySkinConfidence >= 0.70) {
         $('.skinresult h1').text('We\'ve detected dry skin. Here are some products that might work for you!');
-        googleSearch("dry skin products")
+        googleSearch("dry skin products");
       }
 
-      if (mixedSkin === 1 && mixedSkinConfidence >= .70) {
+      if (mixedSkin === 1 && mixedSkinConfidence >= 0.70) {
         $('.skinresult h1').text('We\'ve detected combined or mixed skin . Here are some products that might work for you!');
-        googleSearch("combination skin products")
+        googleSearch("combination skin products");
       }
 
-      if (darkCircle === 1 && darkCircleConfidence >= .70) {
+      if (darkCircle === 1 && darkCircleConfidence >= 0.70) {
         $('.eyeresult h1').text('We\'ve detected dark circles. Here are some products that might work for you!');
-        googleSearch("dark circles")
+        googleSearch("dark circles");
       }
 
-      if (normalSkin === 1 && normalSkinConfidence >= .70) {
+      if (normalSkin === 1 && normalSkinConfidence >= 0.70) {
         $('<div>').text('You have perfect skin!').appendTo($('#message'));
       }
-    })
+    });
 
     $.ajax({
       url: "https://api-us.faceplusplus.com/facepp/v1/face/thousandlandmark",
@@ -131,15 +130,15 @@ function doubleSearch(htmlsrc, htmlinput) {
         const partKeys = Object.keys(landmark[part]);
         partKeys.forEach((coord) => {
           coords.push(landmark[part][coord]);
-        })
+        });
       });
       //plots 1,000 coordinates onto canvas image
       coords.forEach(function (value) {
-        ctx.fillRect(value.x, value.y, 2, 2)
-      })
+        ctx.fillRect(value.x, value.y, 2, 2);
+      });
 
     });
-  };
+  }
   scanFace();
 }
 
@@ -147,22 +146,22 @@ function doubleSearch(htmlsrc, htmlinput) {
 function encodeIMG() {
   var imgFile = $('input').prop('files')[0];
   if (imgFile.size >= 2000000) {
-    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.")
+    $('.error').text("Your image is larger than 2mb! Please upload a smaller image.");
   }
   var reader = new FileReader();
   reader.onloadend = function () {
     preview.src = reader.result; // displays image on site
     imgResult = reader.result; // base64 conversion result 
     return imgResult;
-  }
-  reader.readAsDataURL(imgFile) // Takes the file and converts the data to base64
+  };
+  reader.readAsDataURL(imgFile); // Takes the file and converts the data to base64
 }
 
 $("#submitButton").on("click", function () {
   if ($('#imgURL').val() === "") {
-    $('.error').text("Please include a link to a picture!")
+    $('.error').text("Please include a link to a picture!");
   } else {
-    doubleSearch($('#imgURL').val(), true)
+    doubleSearch($('#imgURL').val(), true);
   }
 });
 
@@ -170,7 +169,7 @@ $("#fileSubmit").on("click", function () {
   if ($('#fileIMG').prop('files')[0] === undefined) {
     $('.error').text("Please upload a picture!");
   } else {
-    doubleSearch()
+    doubleSearch();
   }
 });
 // when we upload a file, we encode it
