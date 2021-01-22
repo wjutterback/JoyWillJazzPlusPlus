@@ -1,3 +1,5 @@
+/* General Styles */
+
 section {
   margin: 2rem;
   padding: 2rem;
@@ -6,11 +8,6 @@ section {
 header {
   opacity: 0.8;
 }
-
-.card {
-  background-color: rgba(147, 190, 223, 0.8);
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -26,6 +23,12 @@ h3 {
   font-size: large;
 }
 
+canvas {
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+/* Site-Wide Specific Classes by order on the page  */
 .Jazz {
   color: darkorange;
 }
@@ -36,6 +39,13 @@ h3 {
 
 .Joy {
   color: mediumaquamarine;
+}
+
+.plus {
+  font-size: 10px;
+}
+.card {
+  background-color: rgba(147, 190, 223, 0.8);
 }
 
 .accordion {
@@ -78,21 +88,6 @@ h3 {
   color: ghostwhite;
   background-color: grey;
   text-align: center;
-}
-
-#message {
-  font-size: 30px;
-  color: ghostwhite;
-  margin-bottom: 5px;
-}
-
-canvas {
-  margin-top: 20px;
-  border-radius: 20px;
-}
-
-.plus {
-  font-size: 10px;
 }
 
 .mobile-bottom-bar {
@@ -154,13 +149,21 @@ canvas {
   margin-bottom: 5px;
   text-transform: uppercase;
 }
+/* Page Specific CSS  */
 
 #body-1 {
   background-image: url("../img/background.jpg");
+  background-size: 50%;
 }
 
 #body-2 {
   background-image: url("../img/back2.jpg");
+  background-size: 50%;
+}
+
+#body-3 {
+  background-image: url("../img/merge-back.jpg");
+  background-size: 50%;
 }
 
 #intro-card,
@@ -199,4 +202,9 @@ canvas {
   font-size: x-large;
   font-weight: bolder;
   color: white;
+}
+#message {
+  font-size: 30px;
+  color: ghostwhite;
+  margin-bottom: 5px;
 }
