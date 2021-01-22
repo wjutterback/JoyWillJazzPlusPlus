@@ -8,6 +8,7 @@ section {
 header {
   opacity: 0.8;
 }
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -44,6 +45,7 @@ canvas {
 .plus {
   font-size: 10px;
 }
+
 .card {
   background-color: rgba(147, 190, 223, 0.8);
 }
