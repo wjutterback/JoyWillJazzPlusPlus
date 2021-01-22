@@ -51,6 +51,7 @@ We utilized Foundation and attached documentation for most of our HTML and CSS l
 [Deciding on CSS] (https://geekflare.com/best-css-frameworks/)
 [Alt""](https://www.w3schools.com/tags/att_img_alt.asp#:~:text=The%20required%20alt%20attribute%20specifies,user%20uses%20a%20screen%20reader).)
 
+[Organizing CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)
 ## License
 MIT License
 
