@@ -1,6 +1,4 @@
 $(document).foundation();
-
-const preview = document.querySelector('img');
 var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
@@ -34,10 +32,11 @@ function doubleSearch(htmlsrc, htmlinput) {
   }
 
   function scanFace() {
-    var data = "";
+    var data = '';
     var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
     if (htmlinput === true) {
-      preview.src = htmlsrc;
+      $('.image').remove();
+      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("class", "image").appendTo($(".imgdisplay"));
       imgResult = htmlsrc;
       data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -121,6 +120,11 @@ function doubleSearch(htmlsrc, htmlinput) {
       var ctx = canvas.getContext("2d");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
+      //redraw canvas if image natural width is very large - not exact, eyeballed the amount
+      if (canvas.width >= "1800") {
+        ctx.scale(0.5, 0.5)
+        ctx.translate(1300, 30);
+      }
       ctx.drawImage(image, 0, 0);
 
       const { landmark } = response.face;
@@ -150,7 +154,7 @@ function encodeIMG() {
   }
   var reader = new FileReader();
   reader.onloadend = function () {
-    preview.src = reader.result; // displays image on site
+    $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("class", "image").appendTo($(".imgdisplay"));
     imgResult = reader.result; // base64 conversion result 
     return imgResult;
   };
@@ -176,5 +180,6 @@ $("#fileSubmit").on("click", function () {
 $('#fileIMG').on("change", function () {
   $('.error').text("");
   $('.error2').text("");
+  $('img').remove();
   encodeIMG();
 });

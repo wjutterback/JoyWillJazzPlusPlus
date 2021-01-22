@@ -1,17 +1,16 @@
 $(document).foundation();
-
-const preview = document.getElementById('preview1');
 var imgResult = "";
 
 function doubleSearch(htmlsrc, htmlinput) {
     $('.error').text("");
     $('#clooneyMessage').text("");
+    $('#imgOne').empty();
 
     function scanFace() {
         var data = "";
         var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
         if (htmlinput === true) {
-            preview.src = htmlsrc;
+            $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("id", "preview1").appendTo($("#imgOne"))
             imgResult = htmlsrc;
             data = {
                 api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -79,7 +78,7 @@ function encodeIMG() {
     }
     var reader = new FileReader();
     reader.onloadend = function () {
-        preview.src = reader.result; // displays image on site
+        $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").appendTo($("#imgOne"));
         imgResult = reader.result; // base64 conversion result 
         return imgResult;
     };
@@ -105,5 +104,6 @@ $("#fileSubmit").on("click", function () {
 // when we upload a file, we encode it
 $('#fileIMG').on("change", function () {
     $('.error').text("");
+    $('#imgOne').empty();
     encodeIMG();
 });

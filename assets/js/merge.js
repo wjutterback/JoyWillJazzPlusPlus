@@ -1,8 +1,5 @@
 $(document).foundation();
 
-const preview = document.getElementById('preview1');
-const preview2 = document.getElementById('preview2');
-const merged = document.getElementById('merged');
 var imgResult = "";
 var imgResult2 = "";
 
@@ -13,8 +10,9 @@ function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
     var data = "";
     var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
     if (htmlinput === true) {
-      preview.src = htmlsrc;
-      preview2.src = htmlsrc2;
+      $('.image').remove();
+      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("id", "preview1").attr("class", "image").appendTo($(".imgdisplay"));
+      $('<img>').attr("src", htmlsrc2).attr("alt", "User Image").attr("id", "preview2").attr("class", "image").appendTo($(".imgdisplay"));
       data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
         api_secret: "u-ZntJ_4-YXqxAQ7kKiLK5PVsy784IIt",
@@ -37,7 +35,7 @@ function doubleSearch(htmlsrc, htmlsrc2, htmlinput) {
       error: error,
     }).then(function (response) {
       //source merged image from base64 result
-      merged.src = "data:image/jpeg;base64," + response.result;
+      $('<img>').attr("src", "data:image/jpeg;base64," + response.result).attr("alt", "User Image").attr("id", "merged").attr("class", "image").appendTo($("#mergedID"));
     });
 
   }
@@ -54,7 +52,8 @@ function encodeIMG() {
   }
   var reader = new FileReader();
   reader.onloadend = function () {
-    preview.src = reader.result; // displays image on site
+    $('.file1').remove();
+    $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview1").attr("class", "file1").appendTo($(".imgdisplay")); // displays image on site
     imgResult = reader.result; // base64 conversion result 
     return imgResult;
   };
@@ -68,7 +67,8 @@ function encodeTemplate() {
   }
   var reader = new FileReader();
   reader.onloadend = function () {
-    preview2.src = reader.result;
+    $('.file2').remove();
+    $('<img>').attr("src", reader.result).attr("alt", "User Image").attr("id", "preview2").attr("class", "file2").appendTo($(".imgdisplay"));
     imgResult2 = reader.result;
     return imgResult2;
   };
