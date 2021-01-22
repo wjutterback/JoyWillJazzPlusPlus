@@ -4,12 +4,12 @@ var imgResult = "";
 function doubleSearch(htmlsrc, htmlinput) {
     $('.error').text("");
     $('#clooneyMessage').text("");
-    $('#imgOne').empty();
 
     function scanFace() {
         var data = "";
         var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
         if (htmlinput === true) {
+            $('#imgOne').empty();
             $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("id", "preview1").appendTo($("#imgOne"))
             imgResult = htmlsrc;
             data = {
