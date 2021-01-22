@@ -49,6 +49,7 @@ We utilized Foundation and attached documentation for most of our HTML and CSS l
 [Backgroud]https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
 
 [Deciding on CSS] (https://geekflare.com/best-css-frameworks/)
+[Alt""](https://www.w3schools.com/tags/att_img_alt.asp#:~:text=The%20required%20alt%20attribute%20specifies,user%20uses%20a%20screen%20reader).)
 
 ## License
 MIT License

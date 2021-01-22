@@ -82,7 +82,7 @@
             <form>
               <div class="medium-6 cell">
                 <label>Paste Your Link Below
-                  <input type="text" id="imgURL" placeholder="Input your img link here!" />
+                  <input type="text" id="imgURL" />
                   <a href="#" class="button primary" id="submitButton">Submit</a>
                 </label>
               </div>
@@ -99,9 +99,12 @@
         <div id="clooneyMessage"></div>
         <div class="cell medium-12 error"></div>
         <div class="grid-x grid-margin-x align-center">
-          <div id="imgOne"><img id="preview1" /></div>
+          <!-- Image is blank because this is where the uploaded image will appear / Alt ID is blank because it is decoration until user uploads the picture -->
+          <div id="imgOne"><img src="" alt="" id="preview1" /></div>
+          
           <div id="imgTwo">
-            <img id="preview2" src="https://i.pinimg.com/originals/d1/88/98/d18898c13240578f2d6aaf8c909234bb.jpg" />
+            <img src="https://i.pinimg.com/originals/d1/88/98/d18898c13240578f2d6aaf8c909234bb.jpg" id="preview2"
+              alt="George Clooney making a funny face" />
           </div>
         </div>
       </div>

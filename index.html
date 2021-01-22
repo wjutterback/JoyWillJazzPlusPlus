@@ -34,7 +34,7 @@
       </div>
     </div>
   </header>
-  <!-- This demo uses flex grid but you can use float grid too -->
+ 
 
   <div class="card" id="intro-card">
     <div class="card-section">
@@ -68,8 +68,7 @@
                 <div class="grid-x grid-padding-x">
                   <div class="medium-6 cell">
                     <label>Upload A File Below!</label>
-                    <input type="file" id="fileIMG" accept="image/png, image/jpeg"
-                      placeholder="Upload your img here!" />
+                    <input type="file" id="fileIMG" accept="image/png, image/jpeg"/>
                     <a class="button radius bordered shadow primary" id="fileSubmit">Submit</a>
                   </div>
                 </div>
@@ -102,7 +101,8 @@
       <div class="cell medium-12 error2"></div>
       <div class="grid-container imgdisplay">
         <div id="message"></div>
-        <img src="" alt="User-uploaded image" />
+        <!-- Image is blank because this is where the uploaded image will appear / Alt ID is blank because it is decoration until user uploads the picture -->
+        <img src="" alt="" />
       </div>
     </div>
   </div>
@@ -137,17 +137,6 @@
       <span class='footer-text'>Background Photo by Karolina Kolacz </span></a>
 
 
-
-    <!-- Footer -->
-
-    <footer class="mobile-bottom-bar">
-      <span class="footer-text center">JoyWillJazz++</span>
-      <a href="https://unsplash.com/@mshfoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-        class="footer-link">
-        <i class="fa fa-sign-out"></i>
-        <span class="footer-text">Background Photo by Karolina Kolacz </span>
-      </a>
-    </footer>
 
     <!-- Linked JS  -->
 
