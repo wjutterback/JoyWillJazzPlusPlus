@@ -53,21 +53,21 @@ function doubleSearch(htmlsrc, htmlinput) {
             }
 
 
-            if (similarFace > 25 && similarFace < 45) {
+            if (similarFace > 25 && similarFace < 50) {
                 $('<div>').text(`You look a bit like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
-            if (similarFace > 45 && similarFace < 65) {
+            if (similarFace > 50 && similarFace < 75) {
                 $('<div>').text(`You look sort of like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
 
-            if (similarFace > 65 && similarFace < 85) {
+            if (similarFace > 75 && similarFace < 95) {
                 $('<div>').text(`You have many similiar features to George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
 
-            if (similarFace > 85) {
+            if (similarFace > 95) {
                 $('<div>').text(`You look a lot like George Clooney! You look ${similarFace}% like George Clooney.`).appendTo($('#clooneyMessage'));
             }
         });
