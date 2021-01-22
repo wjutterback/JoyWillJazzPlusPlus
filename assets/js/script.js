@@ -38,7 +38,7 @@ function doubleSearch(htmlsrc, htmlinput) {
     var error = () => $('.error').text("There was an error with your picture! It was larger than 2MB!");
     if (htmlinput === true) {
       $('.image').remove();
-      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").appendTo($(".imgdisplay"))
+      $('<img>').attr("src", htmlsrc).attr("alt", "User Image").attr("class", "image").appendTo($(".imgdisplay"))
       imgResult = htmlsrc;
       data = {
         api_key: "CKjT0AMrUWohOGp31Z91LRwt5wLh9frE",
@@ -122,8 +122,10 @@ function doubleSearch(htmlsrc, htmlinput) {
       var ctx = canvas.getContext("2d");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
-      if (canvas.width >= "1500") {
+      //redraw canvas if image natural width is very large - not exact, eyeballed the amount
+      if (canvas.width >= "1800") {
         ctx.scale(0.5, 0.5)
+        ctx.translate(1300, 30);
       }
       ctx.drawImage(image, 0, 0);
 
