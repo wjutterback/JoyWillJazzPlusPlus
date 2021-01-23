@@ -20,11 +20,11 @@ function doubleSearch(htmlsrc, htmlinput) {
       for (i = 0; i < googleArray.length; i++) {
         if (response.items[i].link.includes('/p/') === true) {
           if (searchVar === "Acne medication") {
-            $('#acnedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
+            $('#acnedisplay').append(`<a target="_blank" href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           } else if (searchVar === "oily skin products" || searchVar === "dry skin products" || searchVar === "combination skin products") {
-            $('#skindisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
+            $('#skindisplay').append(`<a target="_blank" href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           } else if (searchVar === "dark circles") {
-            $('#eyedisplay').append(`<a href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
+            $('#eyedisplay').append(`<a target="_blank" href="${response.items[i].link}"> <img src="${response.items[i].pagemap.cse_thumbnail[0].src}" /></a>`);
           }
         } else { }
       }
