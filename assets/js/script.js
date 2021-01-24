@@ -7,6 +7,7 @@ function doubleSearch(htmlsrc, htmlinput) {
   $('#message').empty();
   $('.resultdisplay h1').text('');
   $('.erase').empty();
+  $('#canvas-div').empty();
 
   function googleSearch(searchVar) {
 
@@ -72,6 +73,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
+      console.log(response);
 
       if (warning === undefined) {
       } else if (warning.includes('improper') === true) {
