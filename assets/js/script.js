@@ -103,8 +103,10 @@ function doubleSearch(htmlsrc, htmlinput) {
         googleSearch("dark circles");
       }
 
-      if (normalSkin === 1 && normalSkinConfidence >= 0.70) {
+      if (normalSkin === 1 && normalSkinConfidence >= 0.70 && faceAcne === 0 && darkCircle === 0) {
         $('<div>').text('You have perfect skin!').appendTo($('#message'));
+      } else if (normalSkin === 1 && normalSkinConfidence >= 0.70) {
+        $('<div>').text('You don\'t have oily or dry skin!').appendTo($('#message'));
       }
     });
 
@@ -116,7 +118,8 @@ function doubleSearch(htmlsrc, htmlinput) {
       //draws canvas image
       var image = new Image();
       image.src = imgResult;
-      var canvas = document.getElementById("canvasImg");
+      $('#canvas-div').append(`<canvas id="canvasID"></canvas>`)
+      var canvas = document.getElementById('canvasID');
       var ctx = canvas.getContext("2d");
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
@@ -183,6 +186,10 @@ $("#fileSubmit").on("click", function () {
 $('#fileIMG').on("change", function () {
   $('.error').text("");
   $('.error2').text("");
+  $('#message div').remove();
   $('img').remove();
+  $('.resultdisplay h1').text('');
+  $('.erase').empty();
+  $('#canvas-div').empty();
   encodeIMG();
 });
