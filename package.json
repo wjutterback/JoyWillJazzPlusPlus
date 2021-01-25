@@ -1,0 +1,22 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "## Description  We have created 3  applications. The first is called \"Scan your Face-alizer\", this application sends the users photo to an API called Face ++ which analyzes the problem areas of their skin and face. We then send that information to a second Google Search API which searches predetermined sites for products that could help with those problem areas. The second and third were stretch goals realized. The second compares the users face to an image of George Clooney and gives them a percentage of similarity to George Clooney's face. The third allows the user to merge their face with someone elses to create a new face. The applications that we have created serve several purposes. The utilitarian purpose of our first application is second to  the penultimate purpose of all of these applications to amuse and entertain the user. The idea that their photo can be analyzed for problem areas and then they can be recommended a product for the process is enough to wow most users with the advancements we have made over the years in technology. The final stretch goal for this product would be for it to give the most accurate recommendation to the user. However, that is dependant on the reliability or \"confidence\" of the Face ++ API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Refuge001/JoyWillJazzPlusPlus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Refuge001/JoyWillJazzPlusPlus/issues"
+  },
+  "homepage": "https://github.com/Refuge001/JoyWillJazzPlusPlus#readme",
+  "devDependencies": {
+    "eslint": "^7.18.0"
+  }
+}
