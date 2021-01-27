@@ -92,7 +92,6 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
-      console.log(response);
 
       if (warning === !undefined && warning.includes('improper') === true) {
         $('.error2').text(
