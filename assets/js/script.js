@@ -92,6 +92,7 @@ function doubleSearch(htmlsrc, htmlinput) {
       var darkCircle = response.result.dark_circle.value;
       var darkCircleConfidence = response.result.dark_circle.confidence;
       var warning = response.warning[0];
+      console.log(response);
 
       if (warning === !undefined && warning.includes('improper') === true) {
         $('.error2').text(
@@ -144,6 +145,26 @@ function doubleSearch(htmlsrc, htmlinput) {
       } else if (normalSkin === 1 && normalSkinConfidence >= 0.7) {
         $('<div>')
           .text("You don't have oily or dry skin!")
+          .appendTo($('#message'));
+      } else if (
+        normalSkin === 0 &&
+        drySkin === 0 &&
+        oilySkin === 0 &&
+        mixedSkin === 0 &&
+        darkCircle === 0 &&
+        faceAcne === 0
+      ) {
+        $('<div>')
+          .text('Our scan was inconclusive! Please use another picture')
+          .appendTo($('#message'));
+      } else if (
+        (normalSkin === 1 && normalSkinConfidence <= 0.7) ||
+        (drySkin === 1 && drySkinConfidence <= 0.7) ||
+        (oilySkin === 1 && oilySkinConfidence <= 0.7) ||
+        (mixedSkin === 1 && mixedSkinConfidence <= 0.7)
+      ) {
+        $('<div>')
+          .text('The scan was inconclusive! Please use another picture')
           .appendTo($('#message'));
       }
     });
