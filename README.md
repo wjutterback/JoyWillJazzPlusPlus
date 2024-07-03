@@ -1,4 +1,4 @@
-# JoyWillJazz++ --- Project 1
+# JoyWillJazz++
 
 ## Description
 
